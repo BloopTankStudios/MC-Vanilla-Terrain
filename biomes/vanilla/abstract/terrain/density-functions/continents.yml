@@ -1,0 +1,7 @@
+sampler:
+  dimensions: 2
+  type: EXPRESSION
+  expression: continentalness(x * .25 + shift_x(x, y, z), 0, z * .25 + shift_z(x, y, z))
+  samplers:
+    shift_x: $biomes/vanilla/abstract/terrain/density-functions/shift_x.yml:sampler
+    shift_z: $biomes/vanilla/abstract/terrain/density-functions/shift_z.yml:sampler

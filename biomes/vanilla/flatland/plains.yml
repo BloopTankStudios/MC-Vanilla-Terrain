@@ -1,11 +1,7 @@
 id: PLAINS
 type: BIOME
+extends: [ VANILLA-OVERWORLD ]
 vanilla: minecraft:plains
-
-terrain:
-  sampler:
-    type: LINEAR_HEIGHTMAP
-    base: 64
 
 palette:
   - BLOCK:minecraft:stone: 319

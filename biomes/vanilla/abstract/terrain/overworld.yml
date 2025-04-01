@@ -1,0 +1,10 @@
+id: VANILLA-OVERWORLD
+type: BIOME
+abstract: true
+
+terrain:
+  sampler:
+    type: LINEAR_HEIGHTMAP
+    base: 64
+    scale: 25
+    sampler: $biomes/vanilla/abstract/terrain/density-functions/continents.yml:sampler

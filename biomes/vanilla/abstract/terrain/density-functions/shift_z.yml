@@ -1,0 +1,4 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: offset(z/4, x/4, 0) * 4

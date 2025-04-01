@@ -1,0 +1,1126 @@
+samplers:
+  aquifer_barrier:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  aquifer_fluid_level_floodedness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  aquifer_fluid_level_spread:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  aquifer_lava:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+    type: EXPRESSION
+  badlands_pillar:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 2
+        type: PERLIN
+    type: EXPRESSION
+  badlands_pillar_roof:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  badlands_surface:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+    type: EXPRESSION
+  calcite:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+    type: EXPRESSION
+  cave_cheese:
+    dimensions: 3
+    expression: (0.52 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.52 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.13 * noise4(x, y, z) + 0.0325 * noise5(x,
+      y, z) + 0.0 * noise6(x, y, z) + 0.01625 * noise7(x, y, z) + 0.0 * noise8(x,
+      y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  cave_entrance:
+    dimensions: 3
+    expression: (0.41600000000000004 * noise0(x, y, z) + 0.26 * noise1(x, y, z) +
+      0.26 * noise2(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  cave_layer:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  clay_bands_offset:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  continentalness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.52 * noise2(x,
+      y, z) + 0.26 * noise3(x, y, z) + 0.13 * noise4(x, y, z) + 0.0325 * noise5(x,
+      y, z) + 0.01625 * noise6(x, y, z) + 0.008125 * noise7(x, y, z) + 0.0040625 *
+      noise8(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+    type: EXPRESSION
+  continentalness_large:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.52 * noise2(x,
+      y, z) + 0.26 * noise3(x, y, z) + 0.13 * noise4(x, y, z) + 0.0325 * noise5(x,
+      y, z) + 0.01625 * noise6(x, y, z) + 0.008125 * noise7(x, y, z) + 0.0040625 *
+      noise8(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  erosion:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.065 * noise4(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  erosion_large:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.065 * noise4(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  gravel:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  gravel_layer:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y,
+      z) + 0.0 * noise6(x, y, z) + 0.0 * noise7(x, y, z) + 5.416666666666667e-05 *
+      noise8(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  ice:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+    type: EXPRESSION
+  iceberg_pillar:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  iceberg_pillar_roof:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  iceberg_surface:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+    type: EXPRESSION
+  jagged:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.065 * noise4(x, y, z) + 0.0325 * noise5(x,
+      y, z) + 0.01625 * noise6(x, y, z) + 0.008125 * noise7(x, y, z) + 0.0040625 *
+      noise8(x, y, z) + 0.00203125 * noise9(x, y, z) + 0.001015625 * noise10(x, y,
+      z) + 0.0005078125 * noise11(x, y, z) + 0.00025390625 * noise12(x, y, z) + 0.000126953125
+      * noise13(x, y, z) + 6.34765625e-05 * noise14(x, y, z) + 3.173828125e-05 * noise15(x,
+      y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 1.52587890625e-05
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 3.0517578125e-05
+        type: PERLIN
+      noise10:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise11:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise12:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise13:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise14:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise15:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 6.103515625e-05
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.0001220703125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.000244140625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise9:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  nether_state_selector:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+    type: EXPRESSION
+  nether_wart:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.0 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.117 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  netherrack:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.0 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.0455 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  noodle:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  noodle_ridge_a:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  noodle_ridge_b:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  noodle_thickness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  offset:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  ore_gap:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  ore_vein_a:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  ore_vein_b:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  ore_veininess:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  packed_ice:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+    type: EXPRESSION
+  patch:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.0 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.00043333333333333337
+      * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  pillar:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+    type: EXPRESSION
+  pillar_rareness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  pillar_thickness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  powder_snow:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  ridge:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 1.04 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+    type: EXPRESSION
+  soul_sand_layer:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y,
+      z) + 0.0 * noise6(x, y, z) + 0.0 * noise7(x, y, z) + 5.416666666666667e-05 *
+      noise8(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+      noise6:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+      noise7:
+        dimensions: 3
+        frequency: 0.5
+        type: PERLIN
+      noise8:
+        dimensions: 3
+        frequency: 1
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_2d:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_2d_elevation:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_2d_modulator:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_2d_thickness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_3d_1:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_3d_2:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_3d_rarity:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_3d_thickness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_roughness:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  spaghetti_roughness_modulator:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+    type: EXPRESSION
+  surface:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+    type: EXPRESSION
+  surface_secondary:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.13 * noise3(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  surface_swamp:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.25
+        type: PERLIN
+    type: EXPRESSION
+  temperature:
+    dimensions: 3
+    expression: (1.56 * noise0(x, y, z) + 0.0 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION
+  temperature_large:
+    dimensions: 3
+    expression: (1.56 * noise0(x, y, z) + 0.0 * noise1(x, y, z) + 0.26 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.000244140625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.00048828125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+    type: EXPRESSION
+  vegetation:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.0625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.125
+        type: PERLIN
+    type: EXPRESSION
+  vegetation_large:
+    dimensions: 3
+    expression: (1.04 * noise0(x, y, z) + 0.52 * noise1(x, y, z) + 0.0 * noise2(x,
+      y, z) + 0.0 * noise3(x, y, z) + 0.0 * noise4(x, y, z) + 0.0 * noise5(x, y, z))
+    samplers:
+      noise0:
+        dimensions: 3
+        frequency: 0.0009765625
+        type: PERLIN
+      noise1:
+        dimensions: 3
+        frequency: 0.001953125
+        type: PERLIN
+      noise2:
+        dimensions: 3
+        frequency: 0.00390625
+        type: PERLIN
+      noise3:
+        dimensions: 3
+        frequency: 0.0078125
+        type: PERLIN
+      noise4:
+        dimensions: 3
+        frequency: 0.015625
+        type: PERLIN
+      noise5:
+        dimensions: 3
+        frequency: 0.03125
+        type: PERLIN
+    type: EXPRESSION

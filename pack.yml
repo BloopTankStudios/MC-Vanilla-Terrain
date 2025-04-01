@@ -26,9 +26,8 @@ generator: NOISE_3D
 # referenced file(s) below.
 
 # Vanilla biome distribution
-biomes:
-  type: SINGLE
-  biome: PLAINS
+biomes: $biome-providers/presets/vanilla.yml:biomes
+
 
 # ---
 # Population stages
@@ -93,3 +92,7 @@ biomes:
   # Used to generate features that must come after all other features, such as snow on trees.
   #- id: postprocessors
   #  type: FEATURE
+
+samplers:
+  "<<":
+    - math/samplers/vanilla.yml:samplers
