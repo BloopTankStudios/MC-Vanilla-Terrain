@@ -1,0 +1,23 @@
+samplers:
+  continents:
+    dimensions: 2
+    type: EXPRESSION
+    expression: continentalness(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    samplers:
+      continentalness: $math/samplers/helpers/noise.yml:samplers.continentalness
+      shift_x: $math/samplers/helpers/shift.yml:samplers.shift_x
+      shift_z: $math/samplers/helpers/shift.yml:samplers.shift_z
+  erosion:
+    dimensions: 2
+    type: EXPRESSION
+    expression: erosion(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    samplers:
+      erosion: $math/samplers/helpers/noise.yml:samplers.erosion
+      shift_x: $math/samplers/helpers/shift.yml:samplers.shift_x
+      shift_z: $math/samplers/helpers/shift.yml:samplers.shift_z
+  ridges_folded:
+    dimensions: 2
+    type: EXPRESSION
+    expression: -3 * (| |ridges(x, z)| - 2/3| - 1/3)
+    samplers:
+      ridges: $math/samplers/helpers/ridges.yml:samplers.ridges

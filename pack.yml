@@ -93,6 +93,11 @@ biomes: $biome-providers/presets/vanilla.yml:biomes
   #- id: postprocessors
   #  type: FEATURE
 
+functions:
+  "<<":
+    - math/functions/spline.yml:functions
+    - math/functions/lerp.yml:functions
+
 samplers:
   "<<":
-    - math/samplers/vanilla.yml:samplers
+    - math/samplers/density-functions/basic.yml:samplers

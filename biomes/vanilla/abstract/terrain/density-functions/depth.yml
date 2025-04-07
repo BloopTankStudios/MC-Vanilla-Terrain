@@ -1,0 +1,6 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: min(max((y + 64) / 384, 0), 1) * -3 + 1.5 + (offset(x, z) - 0.5037500262260437)
+  samplers:
+    offset: $biomes/vanilla/abstract/terrain/density-functions/offset.yml:sampler

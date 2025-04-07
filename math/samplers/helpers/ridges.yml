@@ -1,0 +1,9 @@
+samplers:
+  ridges:
+    dimensions: 2
+    type: EXPRESSION
+    expression: ridge(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    samplers:
+      ridge: $math/samplers/helpers/noise.yml:samplers.ridge
+      shift_x: $math/samplers/helpers/shift.yml:samplers.shift_x
+      shift_z: $math/samplers/helpers/shift.yml:samplers.shift_z
