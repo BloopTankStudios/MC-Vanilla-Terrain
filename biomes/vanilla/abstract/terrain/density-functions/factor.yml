@@ -1,0 +1,325 @@
+sampler:
+  dimensions: 2
+  expression: |-
+    if(continents(x, z) < -0.19,
+    3.95,
+    if(continents(x, z) < -0.15,
+    spline0(continents(x, z), -0.19, 3.95, -0.15, spline_0(x, z)),
+    if(continents(x, z) < -0.1,
+    spline0(continents(x, z), -0.15, spline_0(x, z), -0.1, spline_1(x, z)),
+    if(continents(x, z) < 0.03,
+    spline0(continents(x, z), -0.1, spline_1(x, z), 0.03, spline_2(x, z)),
+    if(continents(x, z) < 0.06,
+    spline0(continents(x, z), 0.03, spline_2(x, z), 0.06, spline_3(x, z)),
+    spline_3(x, z))))))
+  samplers:
+    spline_0:
+      dimensions: 2
+      expression: |-
+        if(erosion(x, z) < -0.6,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.5,
+        spline0(erosion(x, z), -0.6, spline_0(x, z), -0.5, spline_1(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.5, spline_1(x, z), -0.35, spline_0(x, z)),
+        if(erosion(x, z) < -0.25,
+        spline0(erosion(x, z), -0.35, spline_0(x, z), -0.25, spline_0(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.25, spline_0(x, z), -0.1, spline_2(x, z)),
+        if(erosion(x, z) < 0.03,
+        spline0(erosion(x, z), -0.1, spline_2(x, z), 0.03, spline_0(x, z)),
+        if(erosion(x, z) < 0.35,
+        spline0(erosion(x, z), 0.03, spline_0(x, z), 0.35, 6.25),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.35, 6.25, 0.45, spline_3(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_3(x, z), 0.55, spline_3(x, z)),
+        if(erosion(x, z) < 0.62,
+        spline0(erosion(x, z), 0.55, spline_3(x, z), 0.62, 6.25),
+        6.25))))))))))
+      samplers:
+        spline_0:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.2,
+            6.3,
+            if(ridges(x, z) < 0.2,
+            spline0(ridges(x, z), -0.2, 6.3, 0.2, 6.25),
+            6.25))
+          type: EXPRESSION
+        spline_1:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            6.3,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 6.3, 0.05, 2.67),
+            2.67))
+          type: EXPRESSION
+        spline_2:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            2.67,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 2.67, 0.05, 6.3),
+            6.3))
+          type: EXPRESSION
+        spline_3:
+          dimensions: 2
+          expression: |-
+            if(ridges_folded(x, z) < -0.9,
+            6.25,
+            if(ridges_folded(x, z) < -0.69,
+            spline0(ridges_folded(x, z), -0.9, 6.25, -0.69, spline_0(x, z)),
+            spline_0(x, z)))
+          samplers:
+            spline_0:
+              dimensions: 2
+              expression: |-
+                if(ridges(x, z) < 0,
+                6.25,
+                if(ridges(x, z) < 0.1,
+                spline0(ridges(x, z), 0, 6.25, 0.1, 0.625),
+                0.625))
+              type: EXPRESSION
+          type: EXPRESSION
+      type: EXPRESSION
+    spline_1:
+      dimensions: 2
+      expression: |-
+        if(erosion(x, z) < -0.6,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.5,
+        spline0(erosion(x, z), -0.6, spline_0(x, z), -0.5, spline_1(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.5, spline_1(x, z), -0.35, spline_0(x, z)),
+        if(erosion(x, z) < -0.25,
+        spline0(erosion(x, z), -0.35, spline_0(x, z), -0.25, spline_0(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.25, spline_0(x, z), -0.1, spline_2(x, z)),
+        if(erosion(x, z) < 0.03,
+        spline0(erosion(x, z), -0.1, spline_2(x, z), 0.03, spline_0(x, z)),
+        if(erosion(x, z) < 0.35,
+        spline0(erosion(x, z), 0.03, spline_0(x, z), 0.35, 5.47),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.35, 5.47, 0.45, spline_3(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_3(x, z), 0.55, spline_3(x, z)),
+        if(erosion(x, z) < 0.62,
+        spline0(erosion(x, z), 0.55, spline_3(x, z), 0.62, 5.47),
+        5.47))))))))))
+      samplers:
+        spline_0:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.2,
+            6.3,
+            if(ridges(x, z) < 0.2,
+            spline0(ridges(x, z), -0.2, 6.3, 0.2, 5.47),
+            5.47))
+          type: EXPRESSION
+        spline_1:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            6.3,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 6.3, 0.05, 2.67),
+            2.67))
+          type: EXPRESSION
+        spline_2:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            2.67,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 2.67, 0.05, 6.3),
+            6.3))
+          type: EXPRESSION
+        spline_3:
+          dimensions: 2
+          expression: |-
+            if(ridges_folded(x, z) < -0.9,
+            5.47,
+            if(ridges_folded(x, z) < -0.69,
+            spline0(ridges_folded(x, z), -0.9, 5.47, -0.69, spline_0(x, z)),
+            spline_0(x, z)))
+          samplers:
+            spline_0:
+              dimensions: 2
+              expression: |-
+                if(ridges(x, z) < 0,
+                5.47,
+                if(ridges(x, z) < 0.1,
+                spline0(ridges(x, z), 0, 5.47, 0.1, 0.625),
+                0.625))
+              type: EXPRESSION
+          type: EXPRESSION
+      type: EXPRESSION
+    spline_2:
+      dimensions: 2
+      expression: |-
+        if(erosion(x, z) < -0.6,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.5,
+        spline0(erosion(x, z), -0.6, spline_0(x, z), -0.5, spline_1(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.5, spline_1(x, z), -0.35, spline_0(x, z)),
+        if(erosion(x, z) < -0.25,
+        spline0(erosion(x, z), -0.35, spline_0(x, z), -0.25, spline_0(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.25, spline_0(x, z), -0.1, spline_2(x, z)),
+        if(erosion(x, z) < 0.03,
+        spline0(erosion(x, z), -0.1, spline_2(x, z), 0.03, spline_0(x, z)),
+        if(erosion(x, z) < 0.35,
+        spline0(erosion(x, z), 0.03, spline_0(x, z), 0.35, 5.08),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.35, 5.08, 0.45, spline_3(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_3(x, z), 0.55, spline_3(x, z)),
+        if(erosion(x, z) < 0.62,
+        spline0(erosion(x, z), 0.55, spline_3(x, z), 0.62, 5.08),
+        5.08))))))))))
+      samplers:
+        spline_0:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.2,
+            6.3,
+            if(ridges(x, z) < 0.2,
+            spline0(ridges(x, z), -0.2, 6.3, 0.2, 5.08),
+            5.08))
+          type: EXPRESSION
+        spline_1:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            6.3,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 6.3, 0.05, 2.67),
+            2.67))
+          type: EXPRESSION
+        spline_2:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            2.67,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 2.67, 0.05, 6.3),
+            6.3))
+          type: EXPRESSION
+        spline_3:
+          dimensions: 2
+          expression: |-
+            if(ridges_folded(x, z) < -0.9,
+            5.08,
+            if(ridges_folded(x, z) < -0.69,
+            spline0(ridges_folded(x, z), -0.9, 5.08, -0.69, spline_0(x, z)),
+            spline_0(x, z)))
+          samplers:
+            spline_0:
+              dimensions: 2
+              expression: |-
+                if(ridges(x, z) < 0,
+                5.08,
+                if(ridges(x, z) < 0.1,
+                spline0(ridges(x, z), 0, 5.08, 0.1, 0.625),
+                0.625))
+              type: EXPRESSION
+          type: EXPRESSION
+      type: EXPRESSION
+    spline_3:
+      dimensions: 2
+      expression: |-
+        if(erosion(x, z) < -0.6,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.5,
+        spline0(erosion(x, z), -0.6, spline_0(x, z), -0.5, spline_1(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.5, spline_1(x, z), -0.35, spline_0(x, z)),
+        if(erosion(x, z) < -0.25,
+        spline0(erosion(x, z), -0.35, spline_0(x, z), -0.25, spline_0(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.25, spline_0(x, z), -0.1, spline_2(x, z)),
+        if(erosion(x, z) < 0.03,
+        spline0(erosion(x, z), -0.1, spline_2(x, z), 0.03, spline_0(x, z)),
+        if(erosion(x, z) < 0.05,
+        spline0(erosion(x, z), 0.03, spline_0(x, z), 0.05, spline_3(x, z)),
+        if(erosion(x, z) < 0.4,
+        spline0(erosion(x, z), 0.05, spline_3(x, z), 0.4, spline_3(x, z)),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.4, spline_3(x, z), 0.45, spline_4(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_4(x, z), 0.55, spline_4(x, z)),
+        if(erosion(x, z) < 0.58,
+        spline0(erosion(x, z), 0.55, spline_4(x, z), 0.58, 4.69),
+        4.69)))))))))))
+      samplers:
+        spline_0:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.2,
+            6.3,
+            if(ridges(x, z) < 0.2,
+            spline0(ridges(x, z), -0.2, 6.3, 0.2, 4.69),
+            4.69))
+          type: EXPRESSION
+        spline_1:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            6.3,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 6.3, 0.05, 2.67),
+            2.67))
+          type: EXPRESSION
+        spline_2:
+          dimensions: 2
+          expression: |-
+            if(ridges(x, z) < -0.05,
+            2.67,
+            if(ridges(x, z) < 0.05,
+            spline0(ridges(x, z), -0.05, 2.67, 0.05, 6.3),
+            6.3))
+          type: EXPRESSION
+        spline_3:
+          dimensions: 2
+          expression: |-
+            if(ridges_folded(x, z) < 0.45,
+            spline_0(x, z),
+            if(ridges_folded(x, z) < 0.7,
+            spline0(ridges_folded(x, z), 0.45, spline_0(x, z), 0.7, 1.56),
+            1.56))
+          samplers:
+            spline_0:
+              dimensions: 2
+              expression: |-
+                if(ridges(x, z) < -0.2,
+                6.3,
+                if(ridges(x, z) < 0.2,
+                spline0(ridges(x, z), -0.2, 6.3, 0.2, 4.69),
+                4.69))
+              type: EXPRESSION
+          type: EXPRESSION
+        spline_4:
+          dimensions: 2
+          expression: |-
+            if(ridges_folded(x, z) < -0.7,
+            spline_0(x, z),
+            if(ridges_folded(x, z) < -0.15,
+            spline0(ridges_folded(x, z), -0.7, spline_0(x, z), -0.15, 1.37),
+            1.37))
+          samplers:
+            spline_0:
+              dimensions: 2
+              expression: |-
+                if(ridges(x, z) < -0.2,
+                6.3,
+                if(ridges(x, z) < 0.2,
+                spline0(ridges(x, z), -0.2, 6.3, 0.2, 4.69),
+                4.69))
+              type: EXPRESSION
+          type: EXPRESSION
+      type: EXPRESSION
+  type: EXPRESSION

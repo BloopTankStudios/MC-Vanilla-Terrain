@@ -1,364 +1,541 @@
 sampler:
   dimensions: 2
   expression: |-
-    if(continents(x, z) < -1.1, 0.044, 0) +
-    lerp(continents(x, z), -1.1, 0.044, -1.02, -0.2222) +
-    lerp(continents(x, z), -1.02, -0.2222, -0.51, -0.2222) +
-    lerp(continents(x, z), -0.51, -0.2222, -0.44, -0.12) +
-    lerp(continents(x, z), -0.44, -0.12, -0.18, -0.12) +
-    lerp(continents(x, z), -0.18, -0.12, -0.16, spline_0(x, z)) +
-    lerp(continents(x, z), -0.16, spline_0(x, z), -0.15, spline_0(x, z)) +
-    lerp(continents(x, z), -0.15, spline_0(x, z), -0.1, spline_1(x, z)) +
-    lerp(continents(x, z), -0.1, spline_1(x, z), 0.25, spline_2(x, z)) +
-    lerp(continents(x, z), 0.25, spline_2(x, z), 1, spline_3(x, z)) +
-    if(continents(x, z) >= 1, spline_3(x, z), 0)
+    if(continents(x, z) < -1.1,
+    0.044,
+    if(continents(x, z) < -1.02,
+    spline0(continents(x, z), -1.1, 0.044, -1.02, -0.2222),
+    if(continents(x, z) < -0.51,
+    spline0(continents(x, z), -1.02, -0.2222, -0.51, -0.2222),
+    if(continents(x, z) < -0.44,
+    spline0(continents(x, z), -0.51, -0.2222, -0.44, -0.12),
+    if(continents(x, z) < -0.18,
+    spline0(continents(x, z), -0.44, -0.12, -0.18, -0.12),
+    if(continents(x, z) < -0.16,
+    spline0(continents(x, z), -0.18, -0.12, -0.16, spline_0(x, z)),
+    if(continents(x, z) < -0.15,
+    spline0(continents(x, z), -0.16, spline_0(x, z), -0.15, spline_0(x, z)),
+    if(continents(x, z) < -0.1,
+    spline0(continents(x, z), -0.15, spline_0(x, z), -0.1, spline_1(x, z)),
+    if(continents(x, z) < 0.25,
+    spline0(continents(x, z), -0.1, spline_1(x, z), 0.25, spline_2(x, z)),
+    if(continents(x, z) < 1,
+    spline0(continents(x, z), 0.25, spline_2(x, z), 1, spline_3(x, z)),
+    spline_3(x, z)))))))))))
   samplers:
     spline_0:
       dimensions: 2
       expression: |-
-        if(erosion(x, z) < -0.85, spline_0(x, z), 0) +
-        lerp(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)) +
-        lerp(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)) +
-        lerp(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)) +
-        lerp(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)) +
-        lerp(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.2, spline_5(x, z), 0.7, spline_6(x, z)) +
-        if(erosion(x, z) >= 0.7, spline_6(x, z), 0)
+        if(erosion(x, z) < -0.85,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.7,
+        spline0(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)),
+        if(erosion(x, z) < -0.4,
+        spline0(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)),
+        if(erosion(x, z) < 0.2,
+        spline0(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)),
+        if(erosion(x, z) < 0.7,
+        spline0(erosion(x, z), 0.2, spline_5(x, z), 0.7, spline_6(x, z)),
+        spline_6(x, z))))))))
       samplers:
         spline_0:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.08880186, 0) +
-            lerp(ridges_folded(x, z), -1, -0.08880186, 1, 0.69000006) +
-            if(ridges_folded(x, z) >= 1, 0.69000006, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.38940096, -0.08880186),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), -1, 0.38940096, -0.08880186, 1, 0.38940096, 0.69000006),
+            spline_right_end(ridges_folded(x, z), 1, 0.38940096, 0.69000006)))
           type: EXPRESSION
         spline_1:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.115760356, 0) +
-            lerp(ridges_folded(x, z), -1, -0.115760356, 1, 0.6400001) +
-            if(ridges_folded(x, z) >= 1, 0.6400001, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.37788022, -0.115760356),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), -1, 0.37788022, -0.115760356, 1, 0.37788022, 0.6400001),
+            spline_right_end(ridges_folded(x, z), 1, 0.37788022, 0.6400001)))
           type: EXPRESSION
         spline_2:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.2222, 0) +
-            lerp(ridges_folded(x, z), -1, -0.2222, -0.75, -0.2222) +
-            lerp(ridges_folded(x, z), -0.75, -0.2222, -0.65, 0) +
-            lerp(ridges_folded(x, z), -0.65, 0, 0.5954547, 2.9802322e-08) +
-            lerp(ridges_folded(x, z), 0.5954547, 2.9802322e-08, 0.6054547, 2.9802322e-08) +
-            lerp(ridges_folded(x, z), 0.6054547, 2.9802322e-08, 1, 0.100000024) +
-            if(ridges_folded(x, z) >= 1, 0.100000024, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.2222,
+            if(ridges_folded(x, z) < -0.75,
+            spline0(ridges_folded(x, z), -1, -0.2222, -0.75, -0.2222),
+            if(ridges_folded(x, z) < -0.65,
+            spline0(ridges_folded(x, z), -0.75, -0.2222, -0.65, 0),
+            if(ridges_folded(x, z) < 0.5954547,
+            spline0(ridges_folded(x, z), -0.65, 0, 0.5954547, 2.9802322e-08),
+            if(ridges_folded(x, z) < 0.6054547,
+            spline(ridges_folded(x, z), 0.5954547, 0, 2.9802322e-08, 0.6054547, 0.2534563, 2.9802322e-08),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.6054547, 0.2534563, 2.9802322e-08, 1, 0.2534563, 0.100000024),
+            spline_right_end(ridges_folded(x, z), 1, 0.2534563, 0.100000024)))))))
           type: EXPRESSION
         spline_3:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.3, 0) +
-            lerp(ridges_folded(x, z), -1, -0.3, -0.4, 0.05) +
-            lerp(ridges_folded(x, z), -0.4, 0.05, 0, 0.05) +
-            lerp(ridges_folded(x, z), 0, 0.05, 0.4, 0.05) +
-            lerp(ridges_folded(x, z), 0.4, 0.05, 1, 0.060000002) +
-            if(ridges_folded(x, z) >= 1, 0.060000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.3),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.3, -0.4, 0, 0.05),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.05, 0, 0.05),
+            if(ridges_folded(x, z) < 0.4,
+            spline0(ridges_folded(x, z), 0, 0.05, 0.4, 0.05),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0, 0.05, 1, 0.007000001, 0.060000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.007000001, 0.060000002))))))
           type: EXPRESSION
         spline_4:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.15, 0) +
-            lerp(ridges_folded(x, z), -1, -0.15, -0.4, 0) +
-            lerp(ridges_folded(x, z), -0.4, 0, 0, 0) +
-            lerp(ridges_folded(x, z), 0, 0, 0.4, 0.05) +
-            lerp(ridges_folded(x, z), 0.4, 0.05, 1, 0.060000002) +
-            if(ridges_folded(x, z) >= 1, 0.060000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.15),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.15, -0.4, 0, 0),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0, 0, 0),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, 0, 0.4, 0.1, 0.05),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.1, 0.05, 1, 0.007000001, 0.060000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.007000001, 0.060000002))))))
           type: EXPRESSION
         spline_5:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.15, 0) +
-            lerp(ridges_folded(x, z), -1, -0.15, -0.4, 0) +
-            lerp(ridges_folded(x, z), -0.4, 0, 0, 0) +
-            lerp(ridges_folded(x, z), 0, 0, 0.4, 0) +
-            lerp(ridges_folded(x, z), 0.4, 0, 1, 0) +
-            if(ridges_folded(x, z) >= 1, 0, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.15),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.15, -0.4, 0, 0),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0, 0, 0),
+            if(ridges_folded(x, z) < 0.4,
+            spline0(ridges_folded(x, z), 0, 0, 0.4, 0),
+            if(ridges_folded(x, z) < 1,
+            spline0(ridges_folded(x, z), 0.4, 0, 1, 0),
+            0)))))
           type: EXPRESSION
         spline_6:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.02, 0) +
-            lerp(ridges_folded(x, z), -1, -0.02, -0.4, -0.03) +
-            lerp(ridges_folded(x, z), -0.4, -0.03, 0, -0.03) +
-            lerp(ridges_folded(x, z), 0, -0.03, 0.4, 0) +
-            lerp(ridges_folded(x, z), 0.4, 0, 1, 0) +
-            if(ridges_folded(x, z) >= 1, 0, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.02,
+            if(ridges_folded(x, z) < -0.4,
+            spline0(ridges_folded(x, z), -1, -0.02, -0.4, -0.03),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, -0.03, 0, -0.03),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, -0.03, 0.4, 0.06, 0),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.06, 0, 1, 0, 0),
+            0)))))
           type: EXPRESSION
       type: EXPRESSION
     spline_1:
       dimensions: 2
       expression: |-
-        if(erosion(x, z) < -0.85, spline_0(x, z), 0) +
-        lerp(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)) +
-        lerp(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)) +
-        lerp(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)) +
-        lerp(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)) +
-        lerp(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.2, spline_5(x, z), 0.7, spline_6(x, z)) +
-        if(erosion(x, z) >= 0.7, spline_6(x, z), 0)
+        if(erosion(x, z) < -0.85,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.7,
+        spline0(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)),
+        if(erosion(x, z) < -0.4,
+        spline0(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)),
+        if(erosion(x, z) < 0.2,
+        spline0(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)),
+        if(erosion(x, z) < 0.7,
+        spline0(erosion(x, z), 0.2, spline_5(x, z), 0.7, spline_6(x, z)),
+        spline_6(x, z))))))))
       samplers:
         spline_0:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.08880186, 0) +
-            lerp(ridges_folded(x, z), -1, -0.08880186, 1, 0.69000006) +
-            if(ridges_folded(x, z) >= 1, 0.69000006, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.38940096, -0.08880186),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), -1, 0.38940096, -0.08880186, 1, 0.38940096, 0.69000006),
+            spline_right_end(ridges_folded(x, z), 1, 0.38940096, 0.69000006)))
           type: EXPRESSION
         spline_1:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.115760356, 0) +
-            lerp(ridges_folded(x, z), -1, -0.115760356, 1, 0.6400001) +
-            if(ridges_folded(x, z) >= 1, 0.6400001, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.37788022, -0.115760356),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), -1, 0.37788022, -0.115760356, 1, 0.37788022, 0.6400001),
+            spline_right_end(ridges_folded(x, z), 1, 0.37788022, 0.6400001)))
           type: EXPRESSION
         spline_2:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.2222, 0) +
-            lerp(ridges_folded(x, z), -1, -0.2222, -0.75, -0.2222) +
-            lerp(ridges_folded(x, z), -0.75, -0.2222, -0.65, 0) +
-            lerp(ridges_folded(x, z), -0.65, 0, 0.5954547, 2.9802322e-08) +
-            lerp(ridges_folded(x, z), 0.5954547, 2.9802322e-08, 0.6054547, 2.9802322e-08) +
-            lerp(ridges_folded(x, z), 0.6054547, 2.9802322e-08, 1, 0.100000024) +
-            if(ridges_folded(x, z) >= 1, 0.100000024, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.2222,
+            if(ridges_folded(x, z) < -0.75,
+            spline0(ridges_folded(x, z), -1, -0.2222, -0.75, -0.2222),
+            if(ridges_folded(x, z) < -0.65,
+            spline0(ridges_folded(x, z), -0.75, -0.2222, -0.65, 0),
+            if(ridges_folded(x, z) < 0.5954547,
+            spline0(ridges_folded(x, z), -0.65, 0, 0.5954547, 2.9802322e-08),
+            if(ridges_folded(x, z) < 0.6054547,
+            spline(ridges_folded(x, z), 0.5954547, 0, 2.9802322e-08, 0.6054547, 0.2534563, 2.9802322e-08),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.6054547, 0.2534563, 2.9802322e-08, 1, 0.2534563, 0.100000024),
+            spline_right_end(ridges_folded(x, z), 1, 0.2534563, 0.100000024)))))))
           type: EXPRESSION
         spline_3:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.25, 0) +
-            lerp(ridges_folded(x, z), -1, -0.25, -0.4, 0.05) +
-            lerp(ridges_folded(x, z), -0.4, 0.05, 0, 0.05) +
-            lerp(ridges_folded(x, z), 0, 0.05, 0.4, 0.05) +
-            lerp(ridges_folded(x, z), 0.4, 0.05, 1, 0.060000002) +
-            if(ridges_folded(x, z) >= 1, 0.060000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.25),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.25, -0.4, 0, 0.05),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.05, 0, 0.05),
+            if(ridges_folded(x, z) < 0.4,
+            spline0(ridges_folded(x, z), 0, 0.05, 0.4, 0.05),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0, 0.05, 1, 0.007000001, 0.060000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.007000001, 0.060000002))))))
           type: EXPRESSION
         spline_4:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.1, 0) +
-            lerp(ridges_folded(x, z), -1, -0.1, -0.4, 0.001) +
-            lerp(ridges_folded(x, z), -0.4, 0.001, 0, 0.003) +
-            lerp(ridges_folded(x, z), 0, 0.003, 0.4, 0.05) +
-            lerp(ridges_folded(x, z), 0.4, 0.05, 1, 0.060000002) +
-            if(ridges_folded(x, z) >= 1, 0.060000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.1),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.1, -0.4, 0.01, 0.001),
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -0.4, 0.01, 0.001, 0, 0.01, 0.003),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0.01, 0.003, 0.4, 0.094000004, 0.05),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.094000004, 0.05, 1, 0.007000001, 0.060000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.007000001, 0.060000002))))))
           type: EXPRESSION
         spline_5:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.1, 0) +
-            lerp(ridges_folded(x, z), -1, -0.1, -0.4, 0.01) +
-            lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-            lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.1),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.1, -0.4, 0, 0.01),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
         spline_6:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.02, 0) +
-            lerp(ridges_folded(x, z), -1, -0.02, -0.4, -0.03) +
-            lerp(ridges_folded(x, z), -0.4, -0.03, 0, -0.03) +
-            lerp(ridges_folded(x, z), 0, -0.03, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.02,
+            if(ridges_folded(x, z) < -0.4,
+            spline0(ridges_folded(x, z), -1, -0.02, -0.4, -0.03),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, -0.03, 0, -0.03),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, -0.03, 0.4, 0.12, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.12, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
       type: EXPRESSION
     spline_2:
       dimensions: 2
       expression: |-
-        if(erosion(x, z) < -0.85, spline_0(x, z), 0) +
-        lerp(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)) +
-        lerp(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)) +
-        lerp(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)) +
-        lerp(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)) +
-        lerp(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.2, spline_5(x, z), 0.4, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.4, spline_5(x, z), 0.45, spline_6(x, z)) +
-        lerp(erosion(x, z), 0.45, spline_6(x, z), 0.55, spline_6(x, z)) +
-        lerp(erosion(x, z), 0.55, spline_6(x, z), 0.58, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.58, spline_5(x, z), 0.7, spline_7(x, z)) +
-        if(erosion(x, z) >= 0.7, spline_7(x, z), 0)
+        if(erosion(x, z) < -0.85,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.7,
+        spline0(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)),
+        if(erosion(x, z) < -0.4,
+        spline0(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_2(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.4, spline_2(x, z), -0.35, spline_3(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.35, spline_3(x, z), -0.1, spline_4(x, z)),
+        if(erosion(x, z) < 0.2,
+        spline0(erosion(x, z), -0.1, spline_4(x, z), 0.2, spline_5(x, z)),
+        if(erosion(x, z) < 0.4,
+        spline0(erosion(x, z), 0.2, spline_5(x, z), 0.4, spline_5(x, z)),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.4, spline_5(x, z), 0.45, spline_6(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_6(x, z), 0.55, spline_6(x, z)),
+        if(erosion(x, z) < 0.58,
+        spline0(erosion(x, z), 0.55, spline_6(x, z), 0.58, spline_5(x, z)),
+        if(erosion(x, z) < 0.7,
+        spline0(erosion(x, z), 0.58, spline_5(x, z), 0.7, spline_7(x, z)),
+        spline_7(x, z))))))))))))
       samplers:
         spline_0:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, 0.20235021, 0) +
-            lerp(ridges_folded(x, z), -1, 0.20235021, 0, 0.7161751) +
-            lerp(ridges_folded(x, z), 0, 0.7161751, 1, 1.23) +
-            if(ridges_folded(x, z) >= 1, 1.23, 0)
+            if(ridges_folded(x, z) < -1,
+            0.20235021,
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -1, 0, 0.20235021, 0, 0.5138249, 0.7161751),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0, 0.5138249, 0.7161751, 1, 0.5138249, 1.23),
+            spline_right_end(ridges_folded(x, z), 1, 0.5138249, 1.23))))
           type: EXPRESSION
         spline_1:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, 0.2, 0) +
-            lerp(ridges_folded(x, z), -1, 0.2, 0, 0.44682026) +
-            lerp(ridges_folded(x, z), 0, 0.44682026, 1, 0.88) +
-            if(ridges_folded(x, z) >= 1, 0.88, 0)
+            if(ridges_folded(x, z) < -1,
+            0.2,
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -1, 0, 0.2, 0, 0.43317974, 0.44682026),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0, 0.43317974, 0.44682026, 1, 0.43317974, 0.88),
+            spline_right_end(ridges_folded(x, z), 1, 0.43317974, 0.88))))
           type: EXPRESSION
         spline_2:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, 0.2, 0) +
-            lerp(ridges_folded(x, z), -1, 0.2, 0, 0.30829495) +
-            lerp(ridges_folded(x, z), 0, 0.30829495, 1, 0.70000005) +
-            if(ridges_folded(x, z) >= 1, 0.70000005, 0)
+            if(ridges_folded(x, z) < -1,
+            0.2,
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -1, 0, 0.2, 0, 0.3917051, 0.30829495),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0, 0.3917051, 0.30829495, 1, 0.3917051, 0.70000005),
+            spline_right_end(ridges_folded(x, z), 1, 0.3917051, 0.70000005))))
           type: EXPRESSION
         spline_3:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.25, 0) +
-            lerp(ridges_folded(x, z), -1, -0.25, -0.4, 0.35) +
-            lerp(ridges_folded(x, z), -0.4, 0.35, 0, 0.35) +
-            lerp(ridges_folded(x, z), 0, 0.35, 0.4, 0.35) +
-            lerp(ridges_folded(x, z), 0.4, 0.35, 1, 0.42000002) +
-            if(ridges_folded(x, z) >= 1, 0.42000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.25),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.25, -0.4, 0, 0.35),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.35, 0, 0.35),
+            if(ridges_folded(x, z) < 0.4,
+            spline0(ridges_folded(x, z), 0, 0.35, 0.4, 0.35),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0, 0.35, 1, 0.049000014, 0.42000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.049000014, 0.42000002))))))
           type: EXPRESSION
         spline_4:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.1, 0) +
-            lerp(ridges_folded(x, z), -1, -0.1, -0.4, 0.0069999998) +
-            lerp(ridges_folded(x, z), -0.4, 0.0069999998, 0, 0.021) +
-            lerp(ridges_folded(x, z), 0, 0.021, 0.4, 0.35) +
-            lerp(ridges_folded(x, z), 0.4, 0.35, 1, 0.42000002) +
-            if(ridges_folded(x, z) >= 1, 0.42000002, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.1),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.1, -0.4, 0.07, 0.0069999998),
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -0.4, 0.07, 0.0069999998, 0, 0.07, 0.021),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0.07, 0.021, 0.4, 0.658, 0.35),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.658, 0.35, 1, 0.049000014, 0.42000002),
+            spline_right_end(ridges_folded(x, z), 1, 0.049000014, 0.42000002))))))
           type: EXPRESSION
         spline_5:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.1, 0) +
-            lerp(ridges_folded(x, z), -1, -0.1, -0.4, 0.01) +
-            lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-            lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.1),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.1, -0.4, 0, 0.01),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
         spline_6:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.1, 0) +
-            lerp(ridges_folded(x, z), -1, -0.1, -0.4, spline_0(x, z)) +
-            lerp(ridges_folded(x, z), -0.4, spline_0(x, z), 0, 0.17) +
-            if(ridges_folded(x, z) >= 0, 0.17, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.1,
+            if(ridges_folded(x, z) < -0.4,
+            spline0(ridges_folded(x, z), -1, -0.1, -0.4, spline_0(x, z)),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, spline_0(x, z), 0, 0.17),
+            0.17)))
           samplers:
             spline_0:
               dimensions: 2
               expression: |-
-                if(ridges_folded(x, z) < -1, -0.1, 0) +
-                lerp(ridges_folded(x, z), -1, -0.1, -0.4, 0.01) +
-                lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-                lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-                lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-                if(ridges_folded(x, z) >= 1, 0.1, 0)
+                if(ridges_folded(x, z) < -1,
+                spline_left_end(ridges_folded(x, z), -1, 0.5, -0.1),
+                if(ridges_folded(x, z) < -0.4,
+                spline(ridges_folded(x, z), -1, 0.5, -0.1, -0.4, 0, 0.01),
+                if(ridges_folded(x, z) < 0,
+                spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+                if(ridges_folded(x, z) < 0.4,
+                spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+                if(ridges_folded(x, z) < 1,
+                spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+                spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
               type: EXPRESSION
           type: EXPRESSION
         spline_7:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.02, 0) +
-            lerp(ridges_folded(x, z), -1, -0.02, -0.4, -0.03) +
-            lerp(ridges_folded(x, z), -0.4, -0.03, 0, -0.03) +
-            lerp(ridges_folded(x, z), 0, -0.03, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.02,
+            if(ridges_folded(x, z) < -0.4,
+            spline0(ridges_folded(x, z), -1, -0.02, -0.4, -0.03),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, -0.03, 0, -0.03),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, -0.03, 0.4, 0.12, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.12, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
       type: EXPRESSION
     spline_3:
       dimensions: 2
       expression: |-
-        if(erosion(x, z) < -0.85, spline_0(x, z), 0) +
-        lerp(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)) +
-        lerp(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_1(x, z)) +
-        lerp(erosion(x, z), -0.4, spline_1(x, z), -0.35, spline_2(x, z)) +
-        lerp(erosion(x, z), -0.35, spline_2(x, z), -0.1, spline_3(x, z)) +
-        lerp(erosion(x, z), -0.1, spline_3(x, z), 0.2, spline_4(x, z)) +
-        lerp(erosion(x, z), 0.2, spline_4(x, z), 0.4, spline_4(x, z)) +
-        lerp(erosion(x, z), 0.4, spline_4(x, z), 0.45, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.45, spline_5(x, z), 0.55, spline_5(x, z)) +
-        lerp(erosion(x, z), 0.55, spline_5(x, z), 0.58, spline_4(x, z)) +
-        lerp(erosion(x, z), 0.58, spline_4(x, z), 0.7, spline_6(x, z)) +
-        if(erosion(x, z) >= 0.7, spline_6(x, z), 0)
+        if(erosion(x, z) < -0.85,
+        spline_0(x, z),
+        if(erosion(x, z) < -0.7,
+        spline0(erosion(x, z), -0.85, spline_0(x, z), -0.7, spline_1(x, z)),
+        if(erosion(x, z) < -0.4,
+        spline0(erosion(x, z), -0.7, spline_1(x, z), -0.4, spline_1(x, z)),
+        if(erosion(x, z) < -0.35,
+        spline0(erosion(x, z), -0.4, spline_1(x, z), -0.35, spline_2(x, z)),
+        if(erosion(x, z) < -0.1,
+        spline0(erosion(x, z), -0.35, spline_2(x, z), -0.1, spline_3(x, z)),
+        if(erosion(x, z) < 0.2,
+        spline0(erosion(x, z), -0.1, spline_3(x, z), 0.2, spline_4(x, z)),
+        if(erosion(x, z) < 0.4,
+        spline0(erosion(x, z), 0.2, spline_4(x, z), 0.4, spline_4(x, z)),
+        if(erosion(x, z) < 0.45,
+        spline0(erosion(x, z), 0.4, spline_4(x, z), 0.45, spline_5(x, z)),
+        if(erosion(x, z) < 0.55,
+        spline0(erosion(x, z), 0.45, spline_5(x, z), 0.55, spline_5(x, z)),
+        if(erosion(x, z) < 0.58,
+        spline0(erosion(x, z), 0.55, spline_5(x, z), 0.58, spline_4(x, z)),
+        if(erosion(x, z) < 0.7,
+        spline0(erosion(x, z), 0.58, spline_4(x, z), 0.7, spline_6(x, z)),
+        spline_6(x, z))))))))))))
       samplers:
         spline_0:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, 0.34792626, 0) +
-            lerp(ridges_folded(x, z), -1, 0.34792626, 0, 0.9239631) +
-            lerp(ridges_folded(x, z), 0, 0.9239631, 1, 1.5) +
-            if(ridges_folded(x, z) >= 1, 1.5, 0)
+            if(ridges_folded(x, z) < -1,
+            0.34792626,
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -1, 0, 0.34792626, 0, 0.5760369, 0.9239631),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0, 0.5760369, 0.9239631, 1, 0.5760369, 1.5),
+            spline_right_end(ridges_folded(x, z), 1, 0.5760369, 1.5))))
           type: EXPRESSION
         spline_1:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, 0.2, 0) +
-            lerp(ridges_folded(x, z), -1, 0.2, 0, 0.5391705) +
-            lerp(ridges_folded(x, z), 0, 0.5391705, 1, 1) +
-            if(ridges_folded(x, z) >= 1, 1, 0)
+            if(ridges_folded(x, z) < -1,
+            0.2,
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -1, 0, 0.2, 0, 0.4608295, 0.5391705),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0, 0.4608295, 0.5391705, 1, 0.4608295, 1),
+            spline_right_end(ridges_folded(x, z), 1, 0.4608295, 1))))
           type: EXPRESSION
         spline_2:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.2, 0) +
-            lerp(ridges_folded(x, z), -1, -0.2, -0.4, 0.5) +
-            lerp(ridges_folded(x, z), -0.4, 0.5, 0, 0.5) +
-            lerp(ridges_folded(x, z), 0, 0.5, 0.4, 0.5) +
-            lerp(ridges_folded(x, z), 0.4, 0.5, 1, 0.6) +
-            if(ridges_folded(x, z) >= 1, 0.6, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.2),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.2, -0.4, 0, 0.5),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.5, 0, 0.5),
+            if(ridges_folded(x, z) < 0.4,
+            spline0(ridges_folded(x, z), 0, 0.5, 0.4, 0.5),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0, 0.5, 1, 0.070000015, 0.6),
+            spline_right_end(ridges_folded(x, z), 1, 0.070000015, 0.6))))))
           type: EXPRESSION
         spline_3:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.05, 0) +
-            lerp(ridges_folded(x, z), -1, -0.05, -0.4, 0.01) +
-            lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.03) +
-            lerp(ridges_folded(x, z), 0, 0.03, 0.4, 0.5) +
-            lerp(ridges_folded(x, z), 0.4, 0.5, 1, 0.6) +
-            if(ridges_folded(x, z) >= 1, 0.6, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.05),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.05, -0.4, 0.099999994, 0.01),
+            if(ridges_folded(x, z) < 0,
+            spline(ridges_folded(x, z), -0.4, 0.099999994, 0.01, 0, 0.099999994, 0.03),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0.099999994, 0.03, 0.4, 0.94, 0.5),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.94, 0.5, 1, 0.070000015, 0.6),
+            spline_right_end(ridges_folded(x, z), 1, 0.070000015, 0.6))))))
           type: EXPRESSION
         spline_4:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.05, 0) +
-            lerp(ridges_folded(x, z), -1, -0.05, -0.4, 0.01) +
-            lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-            lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.5, -0.05),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.5, -0.05, -0.4, 0, 0.01),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
         spline_5:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.05, 0) +
-            lerp(ridges_folded(x, z), -1, -0.05, -0.4, spline_0(x, z)) +
-            lerp(ridges_folded(x, z), -0.4, spline_0(x, z), 0, 0.17) +
-            if(ridges_folded(x, z) >= 0, 0.17, 0)
+            if(ridges_folded(x, z) < -1,
+            -0.05,
+            if(ridges_folded(x, z) < -0.4,
+            spline0(ridges_folded(x, z), -1, -0.05, -0.4, spline_0(x, z)),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, spline_0(x, z), 0, 0.17),
+            0.17)))
           samplers:
             spline_0:
               dimensions: 2
               expression: |-
-                if(ridges_folded(x, z) < -1, -0.05, 0) +
-                lerp(ridges_folded(x, z), -1, -0.05, -0.4, 0.01) +
-                lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-                lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-                lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-                if(ridges_folded(x, z) >= 1, 0.1, 0)
+                if(ridges_folded(x, z) < -1,
+                spline_left_end(ridges_folded(x, z), -1, 0.5, -0.05),
+                if(ridges_folded(x, z) < -0.4,
+                spline(ridges_folded(x, z), -1, 0.5, -0.05, -0.4, 0, 0.01),
+                if(ridges_folded(x, z) < 0,
+                spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+                if(ridges_folded(x, z) < 0.4,
+                spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+                if(ridges_folded(x, z) < 1,
+                spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+                spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
               type: EXPRESSION
           type: EXPRESSION
         spline_6:
           dimensions: 2
           expression: |-
-            if(ridges_folded(x, z) < -1, -0.02, 0) +
-            lerp(ridges_folded(x, z), -1, -0.02, -0.4, 0.01) +
-            lerp(ridges_folded(x, z), -0.4, 0.01, 0, 0.01) +
-            lerp(ridges_folded(x, z), 0, 0.01, 0.4, 0.03) +
-            lerp(ridges_folded(x, z), 0.4, 0.03, 1, 0.1) +
-            if(ridges_folded(x, z) >= 1, 0.1, 0)
+            if(ridges_folded(x, z) < -1,
+            spline_left_end(ridges_folded(x, z), -1, 0.015, -0.02),
+            if(ridges_folded(x, z) < -0.4,
+            spline(ridges_folded(x, z), -1, 0.015, -0.02, -0.4, 0, 0.01),
+            if(ridges_folded(x, z) < 0,
+            spline0(ridges_folded(x, z), -0.4, 0.01, 0, 0.01),
+            if(ridges_folded(x, z) < 0.4,
+            spline(ridges_folded(x, z), 0, 0, 0.01, 0.4, 0.04, 0.03),
+            if(ridges_folded(x, z) < 1,
+            spline(ridges_folded(x, z), 0.4, 0.04, 0.03, 1, 0.049, 0.1),
+            spline_right_end(ridges_folded(x, z), 1, 0.049, 0.1))))))
           type: EXPRESSION
       type: EXPRESSION
   type: EXPRESSION

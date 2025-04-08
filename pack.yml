@@ -9,6 +9,7 @@ addons:
   palette-block-shortcut: 1.+
   config-biome: 1.+
   biome-provider-single: 1.+
+  biome-provider-pipeline-v2: 1.+
 
 generator: NOISE_3D
 

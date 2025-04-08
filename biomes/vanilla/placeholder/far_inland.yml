@@ -1,0 +1,7 @@
+id: FAR_INLAND
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:stone: 319

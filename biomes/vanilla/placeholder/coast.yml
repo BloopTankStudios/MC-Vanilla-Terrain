@@ -1,0 +1,7 @@
+id: COAST
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:sand: 319

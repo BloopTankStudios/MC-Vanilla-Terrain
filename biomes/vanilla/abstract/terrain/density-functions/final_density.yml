@@ -1,0 +1,39 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: |
+    squeeze(min(max(0.64 * subSample(x, y, z), -1), 1))
+  functions:
+    squeeze:
+      arguments: [x]
+      # Must be clamped [-1, 1] beforehand
+      expression: x/2 - x^3/24
+  sampler:
+    subSample:
+      dimensions: 3
+      type: KERNEL
+      # Linear Interpolation for 4x4 cubes
+      kernel: [
+        [ 0.0352, 0.0586, 0.0586, 0.0352 ],
+        [ 0.0586, 0.0976, 0.0976, 0.0586 ],
+        [ 0.0586, 0.0976, 0.0976, 0.0586 ],
+        [ 0.0352, 0.0556, 0.0556, 0.0352 ]]
+        #[ 0.0278, 0.0556, 0.0556, 0.0278 ],
+        #[ 0.0556, 0.1111, 0.1111, 0.0556 ],
+        #[ 0.0556, 0.1111, 0.1111, 0.0556 ],
+        #[ 0.0278, 0.0556, 0.0556, 0.0278 ]]
+      sampler:
+        dimensions: 3
+        type: EXPRESSION
+        expression: |
+          0.1171875 + yClampedGradient(y, -64, -40, 0, 1) *
+          (yClampedGradient(y, 240, 256, 1, 0) * (sloped_cheese(x, y, z) + 0.078125) - 0.1953125)
+        functions:
+          yClampedGradient:
+            arguments:
+              - x
+              - x0
+              - x1
+              - y0
+              - y1
+            expression: min(max((x - x0) / (x1 - x0), 0), 1) * (y1 - y0) + y0

@@ -3,4 +3,4 @@ type: BIOME
 abstract: true
 
 terrain:
-  sampler: $biomes/vanilla/abstract/terrain/density-functions/depth.yml:sampler
+  sampler: $biomes/vanilla/abstract/terrain/density-functions/sloped_cheese.yml:sampler

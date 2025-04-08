@@ -1,0 +1,7 @@
+id: OCEAN
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:cyan_wool: 319

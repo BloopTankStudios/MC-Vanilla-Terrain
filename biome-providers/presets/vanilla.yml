@@ -1,3 +1,27 @@
 biomes:
-  type: SINGLE
-  biome: PLAINS
+  type: PIPELINE
+  resolution: 4
+  blend:
+    amplitude: 1.5
+    sampler:
+      type: WHITE_NOISE
+  pipeline:
+    source:
+      type: SAMPLER
+      biomes:
+        - MUSHROOM_FIELDS: 50
+        - DEEP_OCEAN: 595
+        - OCEAN: 265
+        - COAST: 80
+        - NEAR_INLAND: 140
+        - MID_INLAND: 270
+        - FAR_INLAND: 800
+      sampler:
+        type: EXPRESSION
+        expression: continents(x, z) / 1.1
+    stages:
+      - type: REPLACE
+        from: PLAINS
+        to: PLAINS
+        sampler:
+          type: CONSTANT

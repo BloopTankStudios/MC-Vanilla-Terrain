@@ -1,1135 +1,964 @@
 samplers:
   aquifer_barrier:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_fluid_level_floodedness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_fluid_level_spread:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_lava:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_pillar:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 2
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_pillar_roof:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_surface:
     dimensions: 2
-    expression: (1.1885714285714286 * noise0(x, z) + 0.5942857142857143 * noise1(x,
-      z) + 0.29714285714285715 * noise2(x, z))
+    expression: (0.6571428571428571 * noise0(x, z) + 0.32857142857142857 * noise1(x,
+      z) + 0.16428571428571428 * noise2(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   calcite:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_cheese:
     dimensions: 2
-    expression: (0.5210176125244619 * noise0(x, z) + 0.5210176125244619 * noise1(x,
-      z) + 0.5210176125244619 * noise2(x, z) + 0.13025440313111547 * noise3(x, z)
-      + 0.13025440313111547 * noise4(x, z) + 0.03256360078277887 * noise5(x, z) +
-      0.0 * noise6(x, z) + 0.016281800391389434 * noise7(x, z) + 0.0 * noise8(x, z))
+    expression: (0.2880626223091976 * noise0(x, z) + 0.2880626223091976 * noise1(x,
+      z) + 0.2880626223091976 * noise2(x, z) + 0.0720156555772994 * noise3(x, z) +
+      0.0720156555772994 * noise4(x, z) + 0.01800391389432485 * noise5(x, z) + 0.009001956947162425
+      * noise7(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
-      noise6:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
-      noise8:
-        dimensions: 2
-        frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_entrance:
     dimensions: 2
-    expression: (0.4754285714285715 * noise0(x, z) + 0.29714285714285715 * noise1(x,
-      z) + 0.29714285714285715 * noise2(x, z))
+    expression: (0.26285714285714284 * noise0(x, z) + 0.16428571428571428 * noise1(x,
+      z) + 0.16428571428571428 * noise2(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_layer:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   clay_bands_offset:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   continentalness:
     dimensions: 2
-    expression: (1.0420352250489238 * noise0(x, z) + 0.5210176125244619 * noise1(x,
-      z) + 0.5210176125244619 * noise2(x, z) + 0.26050880626223094 * noise3(x, z)
-      + 0.13025440313111547 * noise4(x, z) + 0.03256360078277887 * noise5(x, z) +
-      0.016281800391389434 * noise6(x, z) + 0.008140900195694717 * noise7(x, z) +
-      0.0040704500978473585 * noise8(x, z))
+    expression: (0.5761252446183952 * noise0(x, z) + 0.2880626223091976 * noise1(x,
+      z) + 0.2880626223091976 * noise2(x, z) + 0.1440313111545988 * noise3(x, z) +
+      0.0720156555772994 * noise4(x, z) + 0.01800391389432485 * noise5(x, z) + 0.009001956947162425
+      * noise6(x, z) + 0.0045009784735812125 * noise7(x, z) + 0.0022504892367906063
+      * noise8(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   continentalness_large:
     dimensions: 2
-    expression: (1.0420352250489238 * noise0(x, z) + 0.5210176125244619 * noise1(x,
-      z) + 0.5210176125244619 * noise2(x, z) + 0.26050880626223094 * noise3(x, z)
-      + 0.13025440313111547 * noise4(x, z) + 0.03256360078277887 * noise5(x, z) +
-      0.016281800391389434 * noise6(x, z) + 0.008140900195694717 * noise7(x, z) +
-      0.0040704500978473585 * noise8(x, z))
+    expression: (0.5761252446183952 * noise0(x, z) + 0.2880626223091976 * noise1(x,
+      z) + 0.2880626223091976 * noise2(x, z) + 0.1440313111545988 * noise3(x, z) +
+      0.0720156555772994 * noise4(x, z) + 0.01800391389432485 * noise5(x, z) + 0.009001956947162425
+      * noise6(x, z) + 0.0045009784735812125 * noise7(x, z) + 0.0022504892367906063
+      * noise8(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   erosion:
     dimensions: 2
-    expression: (1.0735483870967741 * noise0(x, z) + 0.5367741935483871 * noise1(x,
-      z) + 0.0 * noise2(x, z) + 0.13419354838709677 * noise3(x, z) + 0.06709677419354838
-      * noise4(x, z))
+    expression: (0.5935483870967742 * noise0(x, z) + 0.2967741935483871 * noise1(x,
+      z) + 0.07419354838709677 * noise3(x, z) + 0.037096774193548385 * noise4(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   erosion_large:
     dimensions: 2
-    expression: (1.0735483870967741 * noise0(x, z) + 0.5367741935483871 * noise1(x,
-      z) + 0.0 * noise2(x, z) + 0.13419354838709677 * noise3(x, z) + 0.06709677419354838
-      * noise4(x, z))
+    expression: (0.5935483870967742 * noise0(x, z) + 0.2967741935483871 * noise1(x,
+      z) + 0.07419354838709677 * noise3(x, z) + 0.037096774193548385 * noise4(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   gravel:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   gravel_layer:
     dimensions: 2
-    expression: (1.0420352250489238 * noise0(x, z) + 0.5210176125244619 * noise1(x,
-      z) + 0.26050880626223094 * noise2(x, z) + 0.13025440313111547 * noise3(x, z)
-      + 0.0 * noise4(x, z) + 0.0 * noise5(x, z) + 0.0 * noise6(x, z) + 0.0 * noise7(x,
-      z) + 5.427266797129811e-05 * noise8(x, z))
+    expression: (0.5761252446183952 * noise0(x, z) + 0.2880626223091976 * noise1(x,
+      z) + 0.1440313111545988 * noise2(x, z) + 0.0720156555772994 * noise3(x, z) +
+      3.0006523157208086e-05 * noise8(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.125
-        type: PERLIN
-      noise6:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
-      noise7:
-        dimensions: 2
-        frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ice:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_pillar:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_pillar_roof:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_surface:
     dimensions: 2
-    expression: (1.1885714285714286 * noise0(x, z) + 0.5942857142857143 * noise1(x,
-      z) + 0.29714285714285715 * noise2(x, z))
+    expression: (0.6571428571428571 * noise0(x, z) + 0.32857142857142857 * noise1(x,
+      z) + 0.16428571428571428 * noise2(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   jagged:
     dimensions: 2
-    expression: (1.0400158693827726 * noise0(x, z) + 0.5200079346913863 * noise1(x,
-      z) + 0.26000396734569314 * noise2(x, z) + 0.13000198367284657 * noise3(x, z)
-      + 0.06500099183642329 * noise4(x, z) + 0.03250049591821164 * noise5(x, z) +
-      0.01625024795910582 * noise6(x, z) + 0.00812512397955291 * noise7(x, z) + 0.004062561989776455
-      * noise8(x, z) + 0.0020312809948882277 * noise9(x, z) + 0.0010156404974441138
-      * noise10(x, z) + 0.0005078202487220569 * noise11(x, z) + 0.00025391012436102846
-      * noise12(x, z) + 0.00012695506218051423 * noise13(x, z) + 6.347753109025712e-05
-      * noise14(x, z) + 3.173876554512856e-05 * noise15(x, z))
+    expression: (0.5750087739375905 * noise0(x, z) + 0.28750438696879527 * noise1(x,
+      z) + 0.14375219348439763 * noise2(x, z) + 0.07187609674219882 * noise3(x, z)
+      + 0.03593804837109941 * noise4(x, z) + 0.017969024185549704 * noise5(x, z) +
+      0.008984512092774852 * noise6(x, z) + 0.004492256046387426 * noise7(x, z) +
+      0.002246128023193713 * noise8(x, z) + 0.0011230640115968565 * noise9(x, z) +
+      0.0005615320057984283 * noise10(x, z) + 0.00028076600289921413 * noise11(x,
+      z) + 0.00014038300144960706 * noise12(x, z) + 7.019150072480353e-05 * noise13(x,
+      z) + 3.5095750362401766e-05 * noise14(x, z) + 1.7547875181200883e-05 * noise15(x,
+      z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 1.52587890625e-05
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 3.0517578125e-05
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise10:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise11:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise12:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise13:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise14:
         dimensions: 2
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise15:
         dimensions: 2
         frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 6.103515625e-05
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.0001220703125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
         frequency: 0.000244140625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise9:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   nether_state_selector:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   nether_wart:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.0 * noise1(x, z) + 0.0 * noise2(x,
-      z) + 0.12480000000000001 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.06899999999999999 * noise3(x,
+      z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
-      noise1:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   netherrack:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.0 * noise1(x, z) + 0.0 * noise2(x,
-      z) + 0.04853333333333333 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.02683333333333333 * noise3(x,
+      z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
-      noise1:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_ridge_a:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_ridge_b:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_thickness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   offset:
     dimensions: 3
-    expression: (1.1093333333333333 * noise0(x, y, z) + 0.5546666666666666 * noise1(x,
-      y, z) + 0.2773333333333333 * noise2(x, y, z) + 0.0 * noise3(x, y, z))
+    expression: (0.6133333333333333 * noise0(x, y, z) + 0.30666666666666664 * noise1(x,
+      y, z) + 0.15333333333333332 * noise2(x, y, z))
     samplers:
       noise0:
         dimensions: 3
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 3
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 3
         frequency: 0.5
-        type: PERLIN
-      noise3:
-        dimensions: 3
-        frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_gap:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_vein_a:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_vein_b:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_veininess:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   packed_ice:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   patch:
     dimensions: 2
-    expression: (1.0565079365079366 * noise0(x, z) + 0.0 * noise1(x, z) + 0.0 * noise2(x,
-      z) + 0.0 * noise3(x, z) + 0.0 * noise4(x, z) + 0.00044021164021164024 * noise5(x,
+    expression: (0.584126984126984 * noise0(x, z) + 0.00024338624338624337 * noise5(x,
       z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
-      noise1:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.125
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar:
     dimensions: 2
-    expression: (1.3866666666666667 * noise0(x, z) + 0.6933333333333334 * noise1(x,
+    expression: (0.7666666666666666 * noise0(x, z) + 0.3833333333333333 * noise1(x,
       z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar_rareness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar_thickness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   powder_snow:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.2773333333333333 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.15333333333333332 * noise2(x, z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ridge:
     dimensions: 2
-    expression: (1.0565079365079366 * noise0(x, z) + 1.0565079365079366 * noise1(x,
-      z) + 0.26412698412698415 * noise2(x, z) + 0.0 * noise3(x, z) + 0.0 * noise4(x,
-      z) + 0.0 * noise5(x, z))
+    expression: (0.584126984126984 * noise0(x, z) + 0.584126984126984 * noise1(x,
+      z) + 0.146031746031746 * noise2(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.125
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   soul_sand_layer:
     dimensions: 2
-    expression: (1.0420352250489238 * noise0(x, z) + 0.5210176125244619 * noise1(x,
-      z) + 0.26050880626223094 * noise2(x, z) + 0.13025440313111547 * noise3(x, z)
-      + 0.0 * noise4(x, z) + 0.0 * noise5(x, z) + 0.0 * noise6(x, z) + 0.0 * noise7(x,
-      z) + 5.427266797129811e-05 * noise8(x, z))
+    expression: (0.5761252446183952 * noise0(x, z) + 0.2880626223091976 * noise1(x,
+      z) + 0.1440313111545988 * noise2(x, z) + 0.0720156555772994 * noise3(x, z) +
+      3.0006523157208086e-05 * noise8(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.125
-        type: PERLIN
-      noise6:
-        dimensions: 2
-        frequency: 0.25
-        type: PERLIN
-      noise7:
-        dimensions: 2
-        frequency: 0.5
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
         frequency: 1
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_elevation:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_modulator:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_thickness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_1:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_2:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_rarity:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_thickness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_roughness:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_roughness_modulator:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface:
     dimensions: 2
-    expression: (1.1885714285714286 * noise0(x, z) + 0.5942857142857143 * noise1(x,
-      z) + 0.29714285714285715 * noise2(x, z))
+    expression: (0.6571428571428571 * noise0(x, z) + 0.32857142857142857 * noise1(x,
+      z) + 0.16428571428571428 * noise2(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface_secondary:
     dimensions: 2
-    expression: (1.1093333333333333 * noise0(x, z) + 0.5546666666666666 * noise1(x,
-      z) + 0.0 * noise2(x, z) + 0.13866666666666666 * noise3(x, z))
+    expression: (0.6133333333333333 * noise0(x, z) + 0.30666666666666664 * noise1(x,
+      z) + 0.07666666666666666 * noise3(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.015625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.03125
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
         frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface_swamp:
     dimensions: 2
-    expression: (2.08 * noise0(x, z))
+    expression: (1.15 * noise0(x, z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.25
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   temperature:
     dimensions: 2
-    expression: (1.5847619047619048 * noise0(x, z) + 0.0 * noise1(x, z) + 0.26412698412698415
-      * noise2(x, z) + 0.0 * noise3(x, z) + 0.0 * noise4(x, z) + 0.0 * noise5(x, z))
+    expression: (0.8761904761904761 * noise0(x, z) + 0.146031746031746 * noise2(x,
+      z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
-      noise1:
-        dimensions: 2
-        frequency: 0.001953125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.0078125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.015625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   temperature_large:
     dimensions: 2
-    expression: (1.5847619047619048 * noise0(x, z) + 0.0 * noise1(x, z) + 0.26412698412698415
-      * noise2(x, z) + 0.0 * noise3(x, z) + 0.0 * noise4(x, z) + 0.0 * noise5(x, z))
+    expression: (0.8761904761904761 * noise0(x, z) + 0.146031746031746 * noise2(x,
+      z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.000244140625
-        type: PERLIN
-      noise1:
-        dimensions: 2
-        frequency: 0.00048828125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.001953125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.00390625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.0078125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   vegetation:
     dimensions: 2
-    expression: (1.0565079365079366 * noise0(x, z) + 0.5282539682539683 * noise1(x,
-      z) + 0.0 * noise2(x, z) + 0.0 * noise3(x, z) + 0.0 * noise4(x, z) + 0.0 * noise5(x,
+    expression: (0.584126984126984 * noise0(x, z) + 0.292063492063492 * noise1(x,
       z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.00390625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.0078125
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.015625
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.03125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.0625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION
   vegetation_large:
     dimensions: 2
-    expression: (1.0565079365079366 * noise0(x, z) + 0.5282539682539683 * noise1(x,
-      z) + 0.0 * noise2(x, z) + 0.0 * noise3(x, z) + 0.0 * noise4(x, z) + 0.0 * noise5(x,
+    expression: (0.584126984126984 * noise0(x, z) + 0.292063492063492 * noise1(x,
       z))
     samplers:
       noise0:
         dimensions: 2
         frequency: 0.0009765625
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
         frequency: 0.001953125
-        type: PERLIN
-      noise2:
-        dimensions: 2
-        frequency: 0.00390625
-        type: PERLIN
-      noise3:
-        dimensions: 2
-        frequency: 0.0078125
-        type: PERLIN
-      noise4:
-        dimensions: 2
-        frequency: 0.015625
-        type: PERLIN
-      noise5:
-        dimensions: 2
-        frequency: 0.03125
-        type: PERLIN
+        type: OPEN_SIMPLEX_2
     type: EXPRESSION

@@ -1,0 +1,7 @@
+id: MUSHROOM_FIELDS
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:mycelium: 319

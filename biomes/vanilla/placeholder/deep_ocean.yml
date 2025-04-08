@@ -1,0 +1,7 @@
+id: DEEP_OCEAN
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:blue_wool: 319

@@ -1,0 +1,7 @@
+id: MID_INLAND
+type: BIOME
+extends: [ VANILLA-OVERWORLD ]
+vanilla: minecraft:plains
+
+palette:
+  - BLOCK:minecraft:dirt: 319
