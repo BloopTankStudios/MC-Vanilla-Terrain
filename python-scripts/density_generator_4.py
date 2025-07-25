@@ -4,8 +4,16 @@
 import os
 import yaml
 
+spline_import = {
+    "spline": "$math/functions/spline.yml:functions.spline",
+    "spline_left_end": "$math/functions/spline.yml:functions.spline_left_end",
+    "spline_right_end": "$math/functions/spline.yml:functions.spline_right_end",
+    "spline0": "$math/functions/spline.yml:functions.spline0"
+}
+
 def read_spline(spline):
-    sampler = spline["coordinate"].split("/")[1] + "(x, z)"
+    all_samplers = {spline["coordinate"].split("/")[1]}
+    sampler = spline["coordinate"].split("/")[1] + "_f"
     points = spline["points"]
 
     sub_splines = []
@@ -21,11 +29,7 @@ def read_spline(spline):
     # Points
     for p in range(len(points) - 1):
         expression += "if(" + sampler + " < " + str(points[p+1]["location"]) + ",\n"
-        if False:
-            expression += "lerp(" + sampler + ", " + str(points[p]["location"]) + ", " + \
-                read_point(points[p]["value"], sub_splines) + ", " + str(points[p+1]["location"]) + ", " + \
-                read_point(points[p+1]["value"], sub_splines) + "),\n"
-        elif points[p]["derivative"] == 0 and points[p+1]["derivative"] == 0:
+        if points[p]["derivative"] == 0 and points[p+1]["derivative"] == 0:
             expression += "spline0(" + sampler + ", " + str(points[p]["location"]) + ", " + \
                 read_point(points[p]["value"], sub_splines) + ", " + str(points[p+1]["location"]) + ", " + \
                 read_point(points[p+1]["value"], sub_splines) + "),\n"
@@ -46,21 +50,21 @@ def read_spline(spline):
         expression += ")"
     
     # Store Data
-    data = {
-        "dimensions": 2,
-        "type": "EXPRESSION"
-    }
     sampler = sampler[:-6]
 
-    data["expression"] = expression
-    if len(sub_splines) > 0:
-        data["samplers"] = {}
+    data = {
+        "expression": expression,
+        "functions": {}
+    }
+    #if len(sub_splines) > 0:
+    #    data["functions"] = {}
 
     # Handles Sub Splines
     for i in range(len(sub_splines)):
-        data["samplers"]["spline_" + str(i)] = read_spline(sub_splines[i])
-
-    return data
+        [data["functions"]["spline_" + str(i)], sub_samplers] = read_spline(sub_splines[i])
+        all_samplers.update(sub_samplers)
+    
+    return [data, all_samplers]
 
 def read_point(value, sub_splines):
     # Just a Number
@@ -70,7 +74,17 @@ def read_point(value, sub_splines):
         # Add to Sub Splines
         if value not in sub_splines:
             sub_splines.append(value)
-        return "spline_" + str(sub_splines.index(value)) + "(x, z)"
+        return "spline_" + str(sub_splines.index(value)) + "({SAMPLERS_F})"
+
+def add_arguments(data, samplers, samplersStr):
+    data["arguments"] = samplers
+    data["expression"] = data["expression"].replace("{SAMPLERS_F}", samplersStr)
+    if "functions" in data:
+        for sub_data in data["functions"]:
+            #if sub_data not in ["spline", "spline_left_end", "spline_right_end", "spline0"]:
+                data["functions"][sub_data] = add_arguments(data["functions"][sub_data], samplers, samplersStr)
+    data["functions"] |= spline_import
+    return data
 
 
 # Make sure new lines are handled properly
@@ -89,10 +103,28 @@ for density_file in density_files:
         input = yaml.safe_load(file)
     
     data = {
-        "sampler": {}
+        "sampler": {
+            "dimensions": 2,
+            "type": "EXPRESSION",
+            "functions": {
+                "spline_func": {
+                }
+            }
+        }
     }
 
-    data["sampler"] = read_spline(input["spline"])
+    [data["sampler"]["functions"]["spline_func"], all_samplers] = read_spline(input["spline"])
+    all_samplers = list(all_samplers)
+
+    # Add samplers to Functions
+    samplerStr = "spline_func("
+    samplerSubStr = ""
+    for i in range(len(all_samplers)):
+        samplerStr += all_samplers[i] + "(x, z), "
+        all_samplers[i] += "_f"
+        samplerSubStr += all_samplers[i] + ", "
+    data["sampler"]["expression"] = samplerStr[:-2] + ")"
+    data["sampler"]["functions"]["spline_func"] = add_arguments(data["sampler"]["functions"]["spline_func"], all_samplers, samplerSubStr[:-2])
 
     with open('python-scripts/output/density/' + density_file, 'w') as file:
         yaml.dump(data, file)

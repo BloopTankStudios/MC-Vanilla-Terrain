@@ -1,0 +1,15 @@
+variables: &variables
+  scale: 0.0078125
+  yLim: .5
+  yScale: .3
+
+type: EXPRESSION
+expression: |
+  noise(x*scale, y*scale, z*scale - floor(min(z*scale - floor(z*scale), yLim)/yScale) * yScale)
+#  noise(x*mult, y*mult, floor(min((z*scale - floor(z*scale))/scale, yLim) / yScale) * yScale)
+variables: *variables
+samplers:
+  noise:
+    dimensions: 3
+    type: OPEN_SIMPLEX_2
+    frequency: 1

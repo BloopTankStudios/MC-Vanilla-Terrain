@@ -1,3 +1,14 @@
+# Creates the "Noise Generators" which are just advanced FBM noise
+# https://misode.github.io/worldgen/noise/
+
+
+# Should be using XoroshiroRandom for exact 1:1, instead will use Terra's Simplex_2 for now
+# Base Function: https://github.com/misode/deepslate/blob/main/src/math/noise/NormalNoise.ts
+# Using this Noise: https://github.com/misode/deepslate/blob/main/src/math/random/XoroshiroRandom.ts
+
+# This is where the Noise Router is created w/ XoroshiroRandom
+# https://github.com/misode/deepslate/blob/main/src/worldgen/SurfaceSystem.ts
+
 
 import os
 import json

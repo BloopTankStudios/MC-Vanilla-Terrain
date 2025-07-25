@@ -1,0 +1,79 @@
+variables: &variables
+  xzScale: .2
+  yScale: .2
+  xzFactor: 80
+  yFactor: 80
+  smearScaleMultiplier: 8
+
+type: EXPRESSION
+expression: |-
+  sampling(mainNoise(x,y,z), minNoise(x,y,z), maxNoise(x,y,z))
+functions:
+  sampling:
+    arguments:
+      - main
+      - min
+      - max
+    expression: |-
+      if((main / 10 + 1) / 2 <= 0,
+      clampLerp(min / 512, 0, main) / 128,
+      if((main / 10 + 1) / 2 >= 1,
+      clampLerp(0, max / 512, main) / 128,
+      clampLerp(min / 512, max / 512, main) / 128))
+    functions:
+      clampLerp:
+        arguments:
+          - a
+          - b
+          - t
+        expression: if(t<=0,a,if(t>=1,b,a*(1-t)+b*(t)))
+samplers:
+  mainNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 8
+    sampler:
+      type: EXPRESSION
+      expression: |-
+        2**7 * 1.15 * noise(x * 684.412 * xzScale / xzFactor, y * 684.412 * yScale / yFactor, z * 684.412 * xzScale / xzFactor)
+      variables: *variables
+      samplers:
+        noise:
+          dimensions: 3
+          type: OPEN_SIMPLEX_2
+          frequency: 1
+  minNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 16
+    sampler:
+      type: EXPRESSION
+      expression: |-
+        2**15 * 1.15 * noise(x * 684.412 * xzScale, y * 684.412 * yScale, z * 684.412 * xzScale)
+      variables: *variables
+      samplers:
+        noise:
+          dimensions: 3
+          type: OPEN_SIMPLEX_2
+          frequency: 1
+  maxNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 16
+    sampler:
+      type: EXPRESSION
+      expression: |-
+        2**15 * 1.15 * noise(x * 684.412 * xzScale, y * 684.412 * yScale, z * 684.412 * xzScale)
+      variables: *variables
+      samplers:
+        noise:
+          dimensions: 3
+          type: OPEN_SIMPLEX_2
+          frequency: 1
+          salt: 1
