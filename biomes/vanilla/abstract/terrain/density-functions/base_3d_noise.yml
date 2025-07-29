@@ -1,32 +1,90 @@
-
-# Should be using "Legacy Random" for exact 1:1, instead will use Terra's Simplex_2 for now
-# Based on Blended Noise: https://github.com/misode/deepslate/blob/main/src/math/noise/BlendedNoise.ts
-# Using Legacy Random: https://github.com/misode/deepslate/blob/main/src/math/random/LegacyRandom.ts
-
-variables: &variables
-  xzScale: 0.25
-  yScale: 0.125
-  xzFactor: 80
-  yFactor: 160
-  smearScaleMultiplier: 8
-
-
 sampler:
   dimensions: 3
-  type: EXPRESSION
-  expression: 0
-  variables: *variables
+  expression: sampling(mainNoise(x,y,z), minNoise(x,y,z), maxNoise(x,y,z))
+  functions:
+    sampling:
+      arguments:
+      - main
+      - min
+      - max
+      expression: |-
+        if(main * 6.4 + 0.5 <= 0,
+        clampLerp(min, 0, main),
+        if(main * 6.4 + 0.5 >= 1,
+        clampLerp(0, max, main),
+        clampLerp(min, max, main)))
+      functions:
+        clampLerp:
+          arguments:
+          - a
+          - b
+          - t
+          expression: if(t<=0,a,if(t>=0.0078125,b,a*(t-0.0078125)/(-0.0078125)+b*t/0.0078125))
   samplers:
-    main_noise:
+    mainNoise:
       dimensions: 3
-      type: EXPRESSION
-      expression: 
+      expression: 1.15 * noise(x * factoredXZ, smear(y * factoredY, factoredSmear),
+        z * factoredXZ)
+      functions: &id001
+        smear:
+          arguments:
+          - y
+          - yScale
+          expression: |
+            floor(y / yScale + 1e-7) * yScale
       samplers:
-        dimensions: 3
-        type: EXPRESSION
-        expression: sample(x * (684.412 * xzScale) / xzFactor, y * (684.412 * yScale) / yFactor, z * (684.412 * xzScale) / xzFactor)
-        variables: *variables
-        samplers:
-          sample:
+        noise:
+          dimensions: 3
+          gain: 2
+          lacunarity: 0.5
+          octaves: 4
+          sampler:
+            dimensions: 3
+            frequency: 0.0625
             type: OPEN_SIMPLEX_2
-            frequency: 1
+          type: FBM
+      type: EXPRESSION
+      variables: &id002
+        factoredSmear: 4.277575000000001
+        factoredXZ: 2.1387875000000003
+        factoredY: 0.5346968750000001
+        scaledSmear: 684.412
+        scaledXZ: 171.103
+        scaledY: 85.5515
+    maxNoise:
+      dimensions: 3
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z *
+        scaledXZ)
+      functions: *id001
+      samplers:
+        noise:
+          dimensions: 3
+          gain: 2
+          lacunarity: 0.5
+          octaves: 8
+          sampler:
+            frequency: 0.00390625
+            salt: 1
+            type: OPEN_SIMPLEX_2
+          type: FBM
+      type: EXPRESSION
+      variables: *id002
+    minNoise:
+      dimensions: 3
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z *
+        scaledXZ)
+      functions: *id001
+      samplers:
+        noise:
+          dimensions: 3
+          gain: 2
+          lacunarity: 0.5
+          octaves: 8
+          sampler:
+            frequency: 0.00390625
+            type: OPEN_SIMPLEX_2
+          type: FBM
+      type: EXPRESSION
+      variables: *id002
+  type: EXPRESSION
+  variables: *id002

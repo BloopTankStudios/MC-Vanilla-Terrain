@@ -1,0 +1,31 @@
+variables: &variables
+  scale: 1
+  yLim: 8
+  yScale: 3
+
+type: EXPRESSION
+expression: |
+  noise(x*scale, y*scale, smear2(z*scale, scale, yScale*scale, z*scale))
+#  noise(x*mult, y*mult, floor(min((z*scale - floor(z*scale))/scale, yLim) / yScale) * yScale)
+variables: *variables
+samplers:
+  noise:
+    dimensions: 3
+    type: OPEN_SIMPLEX_2
+    frequency: .01
+functions:
+  smear:
+    arguments:
+      - y
+      - yScale
+      - yLimit
+    expression: |
+      y - floor(min(y - floor(y), yLimit)/yScale) * yScale
+  smear2:
+    arguments:
+      - y
+      - scale
+      - yScale
+      - yLimit
+    expression: |
+      floor(min((y - floor(y))/scale, yLimit) / yScale) * yScale

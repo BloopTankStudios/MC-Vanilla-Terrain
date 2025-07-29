@@ -1,15 +1,19 @@
 # Does pre-math for noise generator so not doing too much multiplication/handling big numbers
 
+# Should be using "Legacy Random" for exact 1:1, instead will use Terra's Simplex_2 for now
+# Based on Blended Noise: https://github.com/misode/deepslate/blob/main/src/math/noise/BlendedNoise.ts
+# Using Legacy Random: https://github.com/misode/deepslate/blob/main/src/math/random/LegacyRandom.ts
+
 import os
 import yaml
 
 # Default Vanilla resolution is 8, but that can be resource intensive
 resolution = 4
 
-xzScale = 0.2
-yScale = 0.2
+xzScale = 0.25
+yScale = 0.125
 xzFactor = 80
-yFactor = 80
+yFactor = 160
 smearScaleMultiplier = 8
 
 # Make sure new lines are handled properly
@@ -33,6 +37,8 @@ for noise_file in noise_files:
     variables["scaledY"] = 684.412 * yScale
     variables["factoredXZ"] = variables["scaledXZ"] / xzFactor
     variables["factoredY"] = variables["scaledY"] / yFactor
+    variables["scaledSmear"] = smearScaleMultiplier * variables["scaledY"]
+    variables["factoredSmear"] = variables["scaledSmear"] / yFactor
 
     data["sampler"]["functions"]["sampling"]["functions"]["clampLerp"]["expression"] = \
         data["sampler"]["functions"]["sampling"]["functions"]["clampLerp"]["expression"].replace("lerpMax", str(1/128))

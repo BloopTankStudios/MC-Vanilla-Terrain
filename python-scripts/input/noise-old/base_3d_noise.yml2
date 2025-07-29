@@ -4,7 +4,17 @@ sampler:
     scaledY: 1
     factoredXZ: 1
     factoredY: 1
+    scaledSmear: 1
+    factoredSmear: 1
+  functions: &smear
+    smear:
+      arguments:
+        - y
+        - yScale
+      expression: |
+        floor(y / yScale + 1e-7) * yScale
 
+  dimensions: 3
   type: EXPRESSION
   expression: |-
     sampling(mainNoise(x,y,z), minNoise(x,y,z), maxNoise(x,y,z))
@@ -31,8 +41,9 @@ sampler:
     mainNoise:
       dimensions: 3
       type: EXPRESSION
-      expression: 1.15 * noise(x * factoredXZ, y * factoredY, z * factoredXZ)
+      expression: 1.15 * noise(x * factoredXZ, smear(y * factoredY, factoredSmear), z * factoredXZ)
       variables: *variables
+      functions: *smear
       samplers:
         noise:
           type: FBM
@@ -47,8 +58,9 @@ sampler:
     minNoise:
       dimensions: 3
       type: EXPRESSION
-      expression: 0.575 * noise(x * scaledXZ, y * scaledY, z * scaledXZ)
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z * scaledXZ)
       variables: *variables
+      functions: *smear
       samplers:
         noise:
           dimensions: 3
@@ -62,7 +74,8 @@ sampler:
     maxNoise:
       dimensions: 3
       type: EXPRESSION
-      expression: 0.575 * noise(x * scaledXZ, y * scaledY, z * scaledXZ)
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z * scaledXZ)
+      functions: *smear
       variables: *variables
       samplers:
         noise:

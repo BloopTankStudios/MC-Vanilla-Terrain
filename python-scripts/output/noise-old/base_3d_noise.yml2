@@ -1,4 +1,5 @@
 sampler:
+  dimensions: 3
   expression: sampling(mainNoise(x,y,z), minNoise(x,y,z), maxNoise(x,y,z))
   functions:
     sampling:
@@ -22,7 +23,15 @@ sampler:
   samplers:
     mainNoise:
       dimensions: 3
-      expression: 1.15 * noise(x * factoredXZ, y * factoredY, z * factoredXZ)
+      expression: 1.15 * noise(x * factoredXZ, smear(y * factoredY, factoredSmear),
+        z * factoredXZ)
+      functions: &id001
+        smear:
+          arguments:
+          - y
+          - yScale
+          expression: |
+            floor(y / yScale + 1e-7) * yScale
       samplers:
         noise:
           dimensions: 3
@@ -35,14 +44,18 @@ sampler:
             type: OPEN_SIMPLEX_2
           type: FBM
       type: EXPRESSION
-      variables: &id001
-        factoredXZ: 1.7110300000000003
-        factoredY: 1.7110300000000003
-        scaledXZ: 136.88240000000002
-        scaledY: 136.88240000000002
+      variables: &id002
+        factoredSmear: 4.277575000000001
+        factoredXZ: 2.1387875000000003
+        factoredY: 0.5346968750000001
+        scaledSmear: 684.412
+        scaledXZ: 171.103
+        scaledY: 85.5515
     maxNoise:
       dimensions: 3
-      expression: 0.575 * noise(x * scaledXZ, y * scaledY, z * scaledXZ)
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z *
+        scaledXZ)
+      functions: *id001
       samplers:
         noise:
           dimensions: 3
@@ -55,10 +68,12 @@ sampler:
             type: OPEN_SIMPLEX_2
           type: FBM
       type: EXPRESSION
-      variables: *id001
+      variables: *id002
     minNoise:
       dimensions: 3
-      expression: 0.575 * noise(x * scaledXZ, y * scaledY, z * scaledXZ)
+      expression: 0.575 * noise(x * scaledXZ, smear(y * scaledY, scaledSmear), z *
+        scaledXZ)
+      functions: *id001
       samplers:
         noise:
           dimensions: 3
@@ -70,6 +85,6 @@ sampler:
             type: OPEN_SIMPLEX_2
           type: FBM
       type: EXPRESSION
-      variables: *id001
+      variables: *id002
   type: EXPRESSION
-  variables: *id001
+  variables: *id002

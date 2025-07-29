@@ -1,0 +1,151 @@
+expression: |
+  sampling(mainNoise(x, y, z), minNoise(x, y, z), maxNoise(x, y, z))
+functions:
+  sampling:
+    arguments:
+    - main
+    - min
+    - max
+    expression: |-
+      if(main * 6.4 + 0.5 <= 0,
+      clampLerp(min, 0, main),
+      if(main * 6.4 + 0.5 >= 1,
+      clampLerp(0, max, main),
+      clampLerp(min, max, main)))
+    functions:
+      clampLerp:
+        arguments:
+        - a
+        - b
+        - t
+        expression: if(t<=0,a,if(t>=0.0078125,b,a*(t-0.0078125)/(-0.0078125)+b*t/0.0078125))
+samplers:
+  smearNoise:
+    dimensions: 3
+    type: EXPRESSION
+    expression: smear5(z * testY * scale, 0, smear * testY * scale, z * testY * scale) / scale
+    functions: &smears
+      smear:
+        arguments:
+          - y
+          - yScale
+          - yLimit
+        expression: |
+          y - floor(min(y - floor(y), yLimit)/yScale) * yScale
+      smear2:
+        arguments:
+          - y
+          - scale
+          - yScale
+          - yLimit
+        expression: |
+          floor(min((y - floor(y))/scale, yLimit) / yScale) * yScale
+      smear3:
+        arguments:
+          - y
+          - scale
+          - yScale
+          - yLimit
+        expression: |
+          subSmear(y, floor(y), y - floor(y), yScale, yLimit)
+        functions:
+          subSmear:
+            arguments:
+              - y2
+              - y3
+              - y4
+              - yScale
+              - yLimit
+            expression: |
+              floor(y2 / yScale + 1e-7) * yScale
+            functions: &lerp
+                lerp:
+                  # Linear interpolation between two values
+                  arguments:
+                    - t
+                    - at # Value of t where output = a
+                    - a
+                    - bt # Value of t where output = b
+                    - b
+                    # Values of t between at and bt will be interpolated
+                  expression: |
+                    if(at<bt,
+                      if(t<=at,a,if(t>=bt,b,a*(t-bt)/(at-bt)+b*(t-at)/(bt-at))),
+                      if(t>=at,a,if(t<=bt,b,a*(t-bt)/(at-bt)+b*(t-at)/(bt-at)))
+                    )
+      smear4:
+        arguments:
+          - y
+          - scale
+          - yScale
+          - yLimit
+        expression: |
+          lerp((y*scale-floor(y*scale))*.5, 0, floor(y*scale), 1, floor(y*scale) + 1) / scale
+        functions: *lerp
+      smear5:
+        arguments:
+          - y
+          - scale
+          - yScale
+          - yLimit
+        expression: |
+          floor(y / yScale + 1e-7) * yScale
+    variables: &id001
+      factoredXZ: 1.7110300000000003
+      factoredY: 1.7110300000000003
+      testY: 1.711
+      scale: 1
+      scaledXZ: 136.88240000000002
+      scaledY: 136.88240000000002
+      smear: 4
+  mainNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 4
+    sampler:
+      expression: 1.15 * noise(x * factoredXZ, y * factoredXZ, smear5(z * factoredY, 0, smear * factoredY, z * factoredY))
+      functions: *smears
+      samplers:
+        noise:
+          dimensions: 3
+          frequency: 0.0625
+          type: OPEN_SIMPLEX_2S
+      type: EXPRESSION
+      variables: *id001
+  maxNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 8
+    sampler:
+      expression: 0.575 * noise(x * scaledXZ, y * scaledXZ, smear5(z * scaledY, 0, smear * scaledY, z * scaledY))
+      functions: *smears
+      samplers:
+        noise:
+          dimensions: 3
+          frequency: 0.00390625
+          salt: 1
+          type: OPEN_SIMPLEX_2S
+      type: EXPRESSION
+      variables: *id001
+  minNoise:
+    dimensions: 3
+    type: FBM
+    gain: 2
+    lacunarity: 0.5
+    octaves: 8
+    sampler:
+      expression: 0.575 * noise(x * scaledXZ, y * scaledXZ, smear5(z * scaledY, 0, smear * scaledY, z * scaledY))
+      functions: *smears
+      samplers:
+        noise:
+          dimensions: 3
+          frequency: 0.00390625
+          type: OPEN_SIMPLEX_2S
+      type: EXPRESSION
+      variables: *id001
+type: EXPRESSION
+variables: *id001

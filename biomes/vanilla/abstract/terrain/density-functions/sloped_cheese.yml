@@ -2,7 +2,7 @@ sampler:
   dimensions: 3
   type: EXPRESSION
   expression: |
-    quarterNegative((jaggedness(x, z) * halfNegative(jagged(x*1500, z*1500)) + depth(x, y, z)) * factor(x, z)) * 4
+    quarterNegative((jaggedness(x, z) * halfNegative(jagged(x*1500, z*1500)) + depth(x, y, z)) * factor(x, z)) * 4 + base_3d_noise(x, y, z)
   functions:
     halfNegative:
       arguments: [x]
@@ -15,3 +15,4 @@ sampler:
     jaggedness: $biomes/vanilla/abstract/terrain/density-functions/jaggedness.yml:sampler
     depth: $biomes/vanilla/abstract/terrain/density-functions/depth.yml:sampler
     factor: $biomes/vanilla/abstract/terrain/density-functions/factor.yml:sampler
+    base_3d_noise: $biomes/vanilla/abstract/terrain/density-functions/base_3d_noise.yml:sampler
