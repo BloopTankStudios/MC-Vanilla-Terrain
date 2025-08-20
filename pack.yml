@@ -97,8 +97,8 @@ biomes: $biome-providers/presets/vanilla.yml:biomes
 functions:
   "<<":
     - math/functions/spline.yml:functions
-    - math/functions/lerp.yml:functions
 
 samplers:
   "<<":
     - math/samplers/density-functions/basic.yml:samplers
+    - math/samplers/noise/vanilla.yml:samplers

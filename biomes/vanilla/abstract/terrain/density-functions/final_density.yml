@@ -1,39 +1,93 @@
 sampler:
   dimensions: 3
   type: EXPRESSION
-  expression: |
-    squeeze(min(max(0.64 * subSample(x, y, z), -1), 1))
+  expression: |-
+    density_func(y, sloped_cheese(x, y, z), caves_entrances(x, y, z), cave_layer(x, y*8, z), cave_cheese(x, y*0.6666666666666666, z),
+    caves_spaghetti_2d(x, y, z), caves_spaghetti_roughness_function(x, y, z), caves_pillars(x, y, z), caves_noodle(x, y, z))
   functions:
-    squeeze:
-      arguments: [x]
-      # Must be clamped [-1, 1] beforehand
-      expression: x/2 - x^3/24
-  sampler:
-    subSample:
-      dimensions: 3
-      type: KERNEL
-      # Linear Interpolation for 4x4 cubes
-      kernel: [
-        [ 0.0352, 0.0586, 0.0586, 0.0352 ],
-        [ 0.0586, 0.0976, 0.0976, 0.0586 ],
-        [ 0.0586, 0.0976, 0.0976, 0.0586 ],
-        [ 0.0352, 0.0556, 0.0556, 0.0352 ]]
-        #[ 0.0278, 0.0556, 0.0556, 0.0278 ],
-        #[ 0.0556, 0.1111, 0.1111, 0.0556 ],
-        #[ 0.0556, 0.1111, 0.1111, 0.0556 ],
-        #[ 0.0278, 0.0556, 0.0556, 0.0278 ]]
-      sampler:
-        dimensions: 3
-        type: EXPRESSION
-        expression: |
-          0.1171875 + yClampedGradient(y, -64, -40, 0, 1) *
-          (yClampedGradient(y, 240, 256, 1, 0) * (sloped_cheese(x, y, z) + 0.078125) - 0.1953125)
-        functions:
-          yClampedGradient:
-            arguments:
-              - x
-              - x0
-              - x1
-              - y0
-              - y1
-            expression: min(max((x - x0) / (x1 - x0), 0), 1) * (y1 - y0) + y0
+    density_func:
+      arguments:
+      - y
+      - sloped_cheese
+      - caves_entrances
+      # xzScale: 1, yScale: 8
+      - cave_layer
+      # xzScale: 1, yScale: 0.6666666666666666
+      - cave_cheese
+      - caves_spaghetti_2d
+      - caves_spaghetti_roughness_function
+      - caves_pillars
+      - caves_noodle
+      expression: |-
+        min(
+          squeeze(clamp(-1, 1,
+            0.64 * (
+              0.1171875 +
+              yClampedGradient(y, -64, -40, 0, 1) * (
+                -0.1171875 +
+                -0.078125 +
+                yClampedGradient(y, 240, 256, 1, 0) * (
+                  0.078125 +
+                  rangeChoice(sloped_cheese, -1000000, 1.5625,
+                    // Surface
+                    min(
+                      sloped_cheese,
+                      5 * caves_entrances
+                    ),
+                    // Caves
+                    max(
+                      min(
+                        min(
+                          4 * (cave_layer ^ 2) +
+                          clamp(-1, 1, 0.27 + cave_cheese) +
+                          clamp(0, 0.5, 1.5 + -0.64 * sloped_cheese),
+                          caves_entrances
+                        ),
+                        caves_spaghetti_2d +
+                        caves_spaghetti_roughness_function
+                      ),
+                      rangeChoice(caves_pillars, -1000000, 0.03,
+                        -1000000,
+                        caves_pillars
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )),
+        caves_noodle)
+      functions:
+        clamp:
+          arguments:
+          - minNum
+          - maxNum
+          - input
+          expression: min(maxNum, max(minNum, input))
+        squeeze:
+          arguments: [x]
+          # Must be clamped [-1, 1] beforehand
+          expression: x/2 - x^3/24
+        yClampedGradient:
+          arguments:
+            - y
+            - fromY
+            - toY
+            - fromValue
+            - toValue
+          expression: min(max((y - fromY) / (toY - fromY), 0), 1) * (toValue - fromValue) + fromValue
+        rangeChoice:
+          arguments:
+            - input
+            - minInclusive
+            - maxExclusive
+            - inRangeOutput
+            - outOfRangeOutput
+          expression: if(input >= minInclusive && input < maxExclusive, inRangeOutput, outOfRangeOutput)
+  samplers:
+    sloped_cheese: $biomes/vanilla/abstract/terrain/density-functions/sloped_cheese.yml:sampler
+    caves_entrances: $biomes/vanilla/abstract/terrain/density-functions/caves/entrances.yml:sampler
+    caves_spaghetti_2d: $biomes/vanilla/abstract/terrain/density-functions/caves/spaghetti_2d.yml:sampler
+    caves_spaghetti_roughness_function: $biomes/vanilla/abstract/terrain/density-functions/caves/spaghetti_roughness_function.yml:sampler
+    caves_pillars: $biomes/vanilla/abstract/terrain/density-functions/caves/pillars.yml:sampler
+    caves_noodle: $biomes/vanilla/abstract/terrain/density-functions/caves/noodle.yml:sampler

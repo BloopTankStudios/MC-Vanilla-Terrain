@@ -4,10 +4,10 @@ samplers:
     type: EXPRESSION
     expression: offset(x/4, 0, z/4) * 4
     samplers:
-      offset: $math/samplers/helpers/noise.yml:samplers.offset
+      offset: $math/samplers/noise/vanilla.yml:samplers.offset
   shift_z:
     dimensions: 3
     type: EXPRESSION
     expression: offset(z/4, x/4, 0) * 4
     samplers:
-      offset: $math/samplers/helpers/noise.yml:samplers.offset
+      offset: $math/samplers/noise/vanilla.yml:samplers.offset

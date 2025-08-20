@@ -1,0 +1,59 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: |-
+    min(
+      0.37 + cave_entrance(x*.75, y*.5, z*.75) +
+      yClampedGradient(y, -10, 30, 0.3, 0),
+      spaghetti_roughness_function(x, y, z) +
+      clamp(-1, 1,
+        max(
+          spaghetti_3d_1_rarity(x, y, z),
+          spaghetti_3d_2_rarity(x, y, z)
+        ) +
+        -0.0765 + -0.011499999999999996 * spaghetti_3d_thickness(x, y, z)
+      )
+    )
+  functions:
+    clamp:
+      arguments:
+      - minNum
+      - maxNum
+      - input
+      expression: min(maxNum, max(minNum, input))
+    yClampedGradient:
+      arguments:
+        - y
+        - fromY
+        - toY
+        - fromValue
+        - toValue
+      expression: min(max((y - fromY) / (toY - fromY), 0), 1) * (toValue - fromValue) + fromValue
+  samplers:
+    spaghetti_roughness_function: $biomes/vanilla/abstract/terrain/density-functions/caves/spaghetti_roughness_function.yml:sampler
+    spaghetti_3d_1_rarity:
+      dimensions: 3
+      type: EXPRESSION
+      expression: |-
+        rarity(spaghetti_3d_rarity(x*2, y, z*2)) *
+          abs(spaghetti_3d_1(x / rarity(spaghetti_3d_rarity(x*2, y, z*2)),
+          y / rarity(spaghetti_3d_rarity(x*2, y, z*2)),
+          z / rarity(spaghetti_3d_rarity(x*2, y, z*2))))
+      functions:
+        rarity:
+          arguments:
+          - input
+          expression: if(input < -0.5, 0.75, if(input < 0, 1, if (input < 0.5, 1.5, 2)))
+    spaghetti_3d_2_rarity:
+      dimensions: 3
+      type: EXPRESSION
+      expression: |-
+        rarity(spaghetti_3d_rarity(x*2, y, z*2)) *
+          abs(spaghetti_3d_2(x / rarity(spaghetti_3d_rarity(x*2, y, z*2)),
+          y / rarity(spaghetti_3d_rarity(x*2, y, z*2)),
+          z / rarity(spaghetti_3d_rarity(x*2, y, z*2))))
+      functions:
+        rarity:
+          arguments:
+          - input
+          expression: if(input < -0.5, 0.75, if(input < 0, 1, if (input < 0.5, 1.5, 2)))

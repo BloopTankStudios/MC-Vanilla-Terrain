@@ -5,7 +5,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 0
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_fluid_level_floodedness:
@@ -14,7 +15,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 3
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_fluid_level_spread:
@@ -23,7 +25,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 6
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   aquifer_lava:
@@ -32,7 +35,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.5
+        frequency: 0.25
+        salt: 9
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_pillar:
@@ -42,19 +46,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.25
+        frequency: 0.125
+        salt: 12
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.5
+        frequency: 0.25
+        salt: 15
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 18
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 2
+        frequency: 1.0
+        salt: 21
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_pillar_roof:
@@ -63,7 +71,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 24
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   badlands_surface:
@@ -73,15 +82,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 27
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 30
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 33
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   calcite:
@@ -91,82 +103,97 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 36
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 39
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 42
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 45
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_cheese:
-    dimensions: 2
-    expression: (0.2880626223091976 * noise0(x, z) + 0.2880626223091976 * noise1(x,
-      z) + 0.2880626223091976 * noise2(x, z) + 0.0720156555772994 * noise3(x, z) +
-      0.0720156555772994 * noise4(x, z) + 0.01800391389432485 * noise5(x, z) + 0.009001956947162425
-      * noise7(x, z))
+    dimensions: 3
+    expression: (0.2880626223091976 * noise0(x, y, z) + 0.2880626223091976 * noise1(x,
+      y, z) + 0.2880626223091976 * noise2(x, y, z) + 0.0720156555772994 * noise3(x,
+      y, z) + 0.0720156555772994 * noise4(x, y, z) + 0.01800391389432485 * noise5(x,
+      y, z) + 0.009001956947162425 * noise7(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 48
         type: OPEN_SIMPLEX_2
       noise1:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 51
         type: OPEN_SIMPLEX_2
       noise2:
-        dimensions: 2
-        frequency: 0.015625
+        dimensions: 3
+        frequency: 0.0078125
+        salt: 54
         type: OPEN_SIMPLEX_2
       noise3:
-        dimensions: 2
-        frequency: 0.03125
+        dimensions: 3
+        frequency: 0.015625
+        salt: 57
         type: OPEN_SIMPLEX_2
       noise4:
-        dimensions: 2
-        frequency: 0.0625
+        dimensions: 3
+        frequency: 0.03125
+        salt: 60
         type: OPEN_SIMPLEX_2
       noise5:
-        dimensions: 2
-        frequency: 0.125
+        dimensions: 3
+        frequency: 0.0625
+        salt: 63
         type: OPEN_SIMPLEX_2
       noise7:
-        dimensions: 2
-        frequency: 0.5
+        dimensions: 3
+        frequency: 0.25
+        salt: 66
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_entrance:
-    dimensions: 2
-    expression: (0.26285714285714284 * noise0(x, z) + 0.16428571428571428 * noise1(x,
-      z) + 0.16428571428571428 * noise2(x, z))
+    dimensions: 3
+    expression: (0.26285714285714284 * noise0(x, y, z) + 0.16428571428571428 * noise1(x,
+      y, z) + 0.16428571428571428 * noise2(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 69
         type: OPEN_SIMPLEX_2
       noise1:
-        dimensions: 2
-        frequency: 0.015625
+        dimensions: 3
+        frequency: 0.0078125
+        salt: 72
         type: OPEN_SIMPLEX_2
       noise2:
-        dimensions: 2
-        frequency: 0.03125
+        dimensions: 3
+        frequency: 0.015625
+        salt: 75
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   cave_layer:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 78
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   clay_bands_offset:
@@ -175,7 +202,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 81
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   continentalness:
@@ -188,39 +216,48 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 84
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 87
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 90
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 93
         type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 96
         type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 99
         type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 102
         type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
-        frequency: 0.25
+        frequency: 0.125
+        salt: 105
         type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
-        frequency: 0.5
+        frequency: 0.25
+        salt: 108
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   continentalness_large:
@@ -233,39 +270,48 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00048828125
+        frequency: 0.000244140625
+        salt: 111
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 114
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 117
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 120
         type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 123
         type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 126
         type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 129
         type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 132
         type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 135
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   erosion:
@@ -275,19 +321,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 138
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 141
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 144
         type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 147
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   erosion_large:
@@ -297,19 +347,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00048828125
+        frequency: 0.000244140625
+        salt: 150
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 153
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 156
         type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 159
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   gravel:
@@ -319,19 +373,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 162
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 165
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 168
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 171
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   gravel_layer:
@@ -342,23 +400,28 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 174
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 177
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 180
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 183
         type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 186
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ice:
@@ -368,19 +431,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 189
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 192
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.25
+        frequency: 0.125
+        salt: 195
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.5
+        frequency: 0.25
+        salt: 198
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_pillar:
@@ -390,19 +457,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 201
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 204
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 207
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 210
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_pillar_roof:
@@ -411,7 +482,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 213
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   iceberg_surface:
@@ -421,15 +493,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 216
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 219
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 222
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   jagged:
@@ -446,67 +521,83 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 1.52587890625e-05
+        frequency: 7.62939453125e-06
+        salt: 225
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 3.0517578125e-05
+        frequency: 1.52587890625e-05
+        salt: 228
         type: OPEN_SIMPLEX_2
       noise10:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 255
         type: OPEN_SIMPLEX_2
       noise11:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 258
         type: OPEN_SIMPLEX_2
       noise12:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 261
         type: OPEN_SIMPLEX_2
       noise13:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 264
         type: OPEN_SIMPLEX_2
       noise14:
         dimensions: 2
-        frequency: 0.25
+        frequency: 0.125
+        salt: 267
         type: OPEN_SIMPLEX_2
       noise15:
         dimensions: 2
-        frequency: 0.5
+        frequency: 0.25
+        salt: 270
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 6.103515625e-05
+        frequency: 3.0517578125e-05
+        salt: 231
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.0001220703125
+        frequency: 6.103515625e-05
+        salt: 234
         type: OPEN_SIMPLEX_2
       noise4:
         dimensions: 2
-        frequency: 0.000244140625
+        frequency: 0.0001220703125
+        salt: 237
         type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
-        frequency: 0.00048828125
+        frequency: 0.000244140625
+        salt: 240
         type: OPEN_SIMPLEX_2
       noise6:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 243
         type: OPEN_SIMPLEX_2
       noise7:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 246
         type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 249
         type: OPEN_SIMPLEX_2
       noise9:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 252
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   nether_state_selector:
@@ -515,7 +606,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 279
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   nether_wart:
@@ -525,11 +617,13 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 282
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 285
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   netherrack:
@@ -539,47 +633,53 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 273
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 276
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 288
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_ridge_a:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 291
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_ridge_b:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 294
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   noodle_thickness:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 297
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   offset:
@@ -589,15 +689,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 3
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 300
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 3
-        frequency: 0.25
+        frequency: 0.125
+        salt: 303
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 3
-        frequency: 0.5
+        frequency: 0.25
+        salt: 306
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_gap:
@@ -606,7 +709,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 309
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_vein_a:
@@ -615,7 +719,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 315
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_vein_b:
@@ -624,7 +729,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 318
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ore_veininess:
@@ -633,7 +739,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 312
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   packed_ice:
@@ -643,19 +750,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 321
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 324
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 327
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 330
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   patch:
@@ -665,43 +776,49 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 333
         type: OPEN_SIMPLEX_2
       noise5:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 336
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar:
-    dimensions: 2
-    expression: (0.7666666666666666 * noise0(x, z) + 0.3833333333333333 * noise1(x,
-      z))
+    dimensions: 3
+    expression: (0.7666666666666666 * noise0(x, y, z) + 0.3833333333333333 * noise1(x,
+      y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 339
         type: OPEN_SIMPLEX_2
       noise1:
-        dimensions: 2
-        frequency: 0.015625
+        dimensions: 3
+        frequency: 0.0078125
+        salt: 342
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar_rareness:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 345
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   pillar_thickness:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 348
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   powder_snow:
@@ -711,19 +828,23 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 351
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 354
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 357
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 360
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   ridge:
@@ -733,15 +854,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 363
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 366
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 369
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   soul_sand_layer:
@@ -752,23 +876,28 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 372
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 375
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 378
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 381
         type: OPEN_SIMPLEX_2
       noise8:
         dimensions: 2
-        frequency: 1
+        frequency: 0.5
+        salt: 384
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d:
@@ -777,7 +906,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 387
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_elevation:
@@ -786,7 +916,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 390
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_modulator:
@@ -795,7 +926,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00048828125
+        frequency: 0.000244140625
+        salt: 393
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_2d_thickness:
@@ -804,61 +936,68 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00048828125
+        frequency: 0.000244140625
+        salt: 396
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_1:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 399
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_2:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.0078125
+        dimensions: 3
+        frequency: 0.00390625
+        salt: 402
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_rarity:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00048828125
+        dimensions: 3
+        frequency: 0.000244140625
+        salt: 405
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_3d_thickness:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 408
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_roughness:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.03125
+        dimensions: 3
+        frequency: 0.015625
+        salt: 411
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   spaghetti_roughness_modulator:
-    dimensions: 2
-    expression: (1.15 * noise0(x, z))
+    dimensions: 3
+    expression: (1.15 * noise0(x, y, z))
     samplers:
       noise0:
-        dimensions: 2
-        frequency: 0.00390625
+        dimensions: 3
+        frequency: 0.001953125
+        salt: 414
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface:
@@ -868,15 +1007,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 417
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 420
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0625
+        frequency: 0.03125
+        salt: 423
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface_secondary:
@@ -886,15 +1028,18 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.015625
+        frequency: 0.0078125
+        salt: 426
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.03125
+        frequency: 0.015625
+        salt: 429
         type: OPEN_SIMPLEX_2
       noise3:
         dimensions: 2
-        frequency: 0.125
+        frequency: 0.0625
+        salt: 432
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   surface_swamp:
@@ -903,7 +1048,8 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.25
+        frequency: 0.125
+        salt: 435
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   temperature:
@@ -913,11 +1059,13 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 438
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 441
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   temperature_large:
@@ -927,11 +1075,13 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.000244140625
+        frequency: 0.0001220703125
+        salt: 444
         type: OPEN_SIMPLEX_2
       noise2:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 447
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   vegetation:
@@ -941,11 +1091,13 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.00390625
+        frequency: 0.001953125
+        salt: 450
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.0078125
+        frequency: 0.00390625
+        salt: 453
         type: OPEN_SIMPLEX_2
     type: EXPRESSION
   vegetation_large:
@@ -955,10 +1107,12 @@ samplers:
     samplers:
       noise0:
         dimensions: 2
-        frequency: 0.0009765625
+        frequency: 0.00048828125
+        salt: 456
         type: OPEN_SIMPLEX_2
       noise1:
         dimensions: 2
-        frequency: 0.001953125
+        frequency: 0.0009765625
+        salt: 459
         type: OPEN_SIMPLEX_2
     type: EXPRESSION

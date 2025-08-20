@@ -1,0 +1,4 @@
+sampler:
+  dimensions: 2
+  type: EXPRESSION
+  expression: -0.95 + -0.35 * spaghetti_2d_thickness(x*2, z*2)

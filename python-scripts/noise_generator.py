@@ -14,9 +14,13 @@ import os
 import json
 import yaml
 
+noise_3d = ["offset", "spaghetti_roughness_modulator", "spaghetti_roughness", "cave_entrance", "spaghetti_3d_1", "spaghetti_3d_2", "spaghetti_3d_rarity",
+            "spaghetti_3d_thickness", "cave_layer", "cave_cheese", "pillar", "pillar_rareness", "pillar_thickness", "noodle", "noodle_thickness",
+            "noodle_ridge_a", "noodle_ridge_b"]
+
 # Function to convert Vanilla terms to Terra
 def noiseFunction(firstOctave, amplitude, index, size):
-    frequency = 2**(firstOctave + index)
+    frequency = 2**(firstOctave + index) * .5
     amplitude = 1.15 * amplitude * 2**(size - index - 1) / (2**size - 1)
     return [frequency, amplitude]
 
@@ -28,6 +32,8 @@ data = {
     "samplers": {}
 }
 
+salt = 0
+
 for noise_file in noise_files:
     # Open and read the JSON file
     with open('python-scripts/input/noise/' + noise_file, 'r') as file:
@@ -38,7 +44,7 @@ for noise_file in noise_files:
     amplitudes = input["amplitudes"]
 
     dim = 2
-    if noise_file.split(".")[0] == "offset":
+    if noise_file.split(".")[0] in noise_3d:
         dim = 3
 
     # Use Expression
@@ -67,10 +73,15 @@ for noise_file in noise_files:
             #    "sampler": {"type": "PERLIN", "dimensions": dim}}
             sampler["samplers"]["noise" + str(i)] = {"type": "OPEN_SIMPLEX_2", "dimensions": dim}
             sampler["samplers"]["noise" + str(i)]["frequency"] = perlinParams[0]
+            # Add salt per Noise Function
+            sampler["samplers"]["noise" + str(i)]["salt"] = salt
+            salt += 3
+
             if dim == 2:
                 sampler["expression"] += str(perlinParams[1] * mult) + " * noise" + str(i) + "(x, z) + "
             else:
                 sampler["expression"] += str(perlinParams[1] * mult) + " * noise" + str(i) + "(x, y, z) + "
+
     
     # Expression Cleanup
     sampler["expression"] = sampler["expression"][:-3] + ")"

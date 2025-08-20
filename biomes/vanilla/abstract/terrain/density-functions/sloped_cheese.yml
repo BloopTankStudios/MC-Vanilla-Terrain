@@ -11,7 +11,6 @@ sampler:
       arguments: [x]
       expression: if(x < 0, x/4, x)
   samplers:
-    jagged: $math/samplers/helpers/noise.yml:samplers.jagged
     jaggedness: $biomes/vanilla/abstract/terrain/density-functions/jaggedness.yml:sampler
     depth: $biomes/vanilla/abstract/terrain/density-functions/depth.yml:sampler
     factor: $biomes/vanilla/abstract/terrain/density-functions/factor.yml:sampler

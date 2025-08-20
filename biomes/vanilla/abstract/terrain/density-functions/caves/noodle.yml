@@ -1,0 +1,30 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: |-
+    rangeChoice(
+      rangeChoice(y, -60, 321,
+        noodle(x, y, z),
+      -1),
+    -1000000, 0, 64,
+      rangeChoice(y, -60, 321,
+        -0.075 + -0.025 * noodle_thickness(x, y, z),
+      0) +
+      1.5 * max(
+        abs(rangeChoice(y, -60, 321, 
+          noodle_ridge_a(x*2.6666666666666665, y*2.6666666666666665, z*2.6666666666666665),
+        0)),
+        abs(rangeChoice(y, -60, 321,
+          noodle_ridge_b(x*2.6666666666666665, y*2.6666666666666665, z*2.6666666666666665),
+        0))
+      )
+    )
+  functions:
+    rangeChoice:
+      arguments:
+        - input
+        - minInclusive
+        - maxExclusive
+        - inRangeOutput
+        - outOfRangeOutput
+      expression: if(input >= minInclusive && input < maxExclusive, inRangeOutput, outOfRangeOutput)

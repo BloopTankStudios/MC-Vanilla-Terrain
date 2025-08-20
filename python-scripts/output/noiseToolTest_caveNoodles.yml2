@@ -1,0 +1,70 @@
+type: EXPRESSION
+expression: test(x, y, z)
+samplers:
+  test:
+    dimensions: 3
+    type: EXPRESSION
+    expression: |-
+      rangeChoice(
+        rangeChoice(y, -60, 321,
+          noodle(x, y, z),
+        -1),
+      -1000000, 0, 64,
+        rangeChoice(y, -60, 321,
+          -0.075 + -0.025 * noodle_thickness(x, y, z),
+        0) +
+        1.5 * max(
+          abs(rangeChoice(y, -60, 321, 
+            noodle_ridge_a(x*2.6666666666666665, y*2.6666666666666665, z*2.6666666666666665),
+          0)),
+          abs(rangeChoice(y, -60, 321,
+            noodle_ridge_b(x*2.6666666666666665, y*2.6666666666666665, z*2.6666666666666665),
+          0))
+        )
+      )
+    functions:
+      rangeChoice:
+        arguments:
+          - input
+          - minInclusive
+          - maxExclusive
+          - inRangeOutput
+          - outOfRangeOutput
+        expression: if(input >= minInclusive && input < maxExclusive, inRangeOutput, outOfRangeOutput)
+    samplers:
+      noodle:
+        dimensions: 3
+        expression: (1.15 * noise0(x, y, z))
+        samplers:
+          noise0:
+            dimensions: 3
+            frequency: 0.0009765625
+            type: OPEN_SIMPLEX_2
+        type: EXPRESSION
+      noodle_ridge_a:
+        dimensions: 3
+        expression: (1.15 * noise0(x, y, z))
+        samplers:
+          noise0:
+            dimensions: 3
+            frequency: 0.001953125
+            type: OPEN_SIMPLEX_2
+        type: EXPRESSION
+      noodle_ridge_b:
+        dimensions: 3
+        expression: (1.15 * noise0(x, y, z))
+        samplers:
+          noise0:
+            dimensions: 3
+            frequency: 0.001953125
+            type: OPEN_SIMPLEX_2
+        type: EXPRESSION
+      noodle_thickness:
+        dimensions: 3
+        expression: (1.15 * noise0(x, y, z))
+        samplers:
+          noise0:
+            dimensions: 3
+            frequency: 0.0009765625
+            type: OPEN_SIMPLEX_2
+        type: EXPRESSION

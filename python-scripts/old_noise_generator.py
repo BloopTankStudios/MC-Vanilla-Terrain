@@ -44,13 +44,13 @@ for noise_file in noise_files:
         data["sampler"]["functions"]["sampling"]["functions"]["clampLerp"]["expression"].replace("lerpMax", str(1/128))
 
     data["sampler"]["samplers"]["mainNoise"]["samplers"]["noise"]["octaves"] = resolution
-    data["sampler"]["samplers"]["mainNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(8-resolution)
+    data["sampler"]["samplers"]["mainNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(8-resolution) * .5
 
     data["sampler"]["samplers"]["minNoise"]["samplers"]["noise"]["octaves"] = resolution*2
-    data["sampler"]["samplers"]["minNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(16-2*resolution)
+    data["sampler"]["samplers"]["minNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(16-2*resolution) * .5
 
     data["sampler"]["samplers"]["maxNoise"]["samplers"]["noise"]["octaves"] = resolution*2
-    data["sampler"]["samplers"]["maxNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(16-2*resolution)
+    data["sampler"]["samplers"]["maxNoise"]["samplers"]["noise"]["sampler"]["frequency"] = 1 / 2**(16-2*resolution) * .5
 
     with open('python-scripts/output/noise-old/' + noise_file, 'w') as file:
         yaml.dump(data, file)

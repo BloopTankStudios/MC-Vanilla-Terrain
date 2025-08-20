@@ -1,0 +1,6 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: |-
+    (-0.05 + -0.05 * spaghetti_roughness_modulator(x, y, z)) *
+    (-0.4 + abs(spaghetti_roughness(x, y, z)))

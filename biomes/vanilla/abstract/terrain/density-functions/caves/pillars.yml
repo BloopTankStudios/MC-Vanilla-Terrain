@@ -1,0 +1,8 @@
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  expression: |-
+    (2 * pillar(x*25, y*.3, z*25) +
+      -1 + -1 * pillar_rareness(x, y, z)
+    ) *
+    (0.55 + 0.55 * pillar_thickness(x, y, z)) ^ 3
