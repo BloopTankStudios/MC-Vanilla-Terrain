@@ -1,26 +1,26 @@
 sampler:
   dimensions: 2
-  expression: spline_func(ridges(x, z), erosion(x, z), continents(x, z), ridges_folded(x,
+  expression: spline_func(continents(x, z), ridges_folded(x, z), erosion(x, z), ridges(x,
     z))
   functions:
     spline_func:
       arguments: &id001
-      - ridges_f
-      - erosion_f
       - continents_f
       - ridges_folded_f
+      - erosion_f
+      - ridges_f
       expression: |-
         if(continents_f < -0.19,
         3.95,
         if(continents_f < -0.15,
-        spline0(continents_f, -0.19, 3.95, -0.15, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+        spline0(continents_f, -0.19, 3.95, -0.15, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
         if(continents_f < -0.1,
-        spline0(continents_f, -0.15, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.1, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+        spline0(continents_f, -0.15, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.1, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f)),
         if(continents_f < 0.03,
-        spline0(continents_f, -0.1, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.03, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+        spline0(continents_f, -0.1, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.03, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f)),
         if(continents_f < 0.06,
-        spline0(continents_f, 0.03, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.06, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
-        spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f))))))
+        spline0(continents_f, 0.03, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.06, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
+        spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f))))))
       functions:
         spline: $math/functions/spline.yml:functions.spline
         spline0: $math/functions/spline.yml:functions.spline0
@@ -28,25 +28,25 @@ sampler:
           arguments: *id001
           expression: |-
             if(erosion_f < -0.6,
-            spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+            spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
             if(erosion_f < -0.5,
-            spline0(erosion_f, -0.6, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.6, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.35,
-            spline0(erosion_f, -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.25,
-            spline0(erosion_f, -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.1,
-            spline0(erosion_f, -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.03,
-            spline0(erosion_f, -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.35,
-            spline0(erosion_f, 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.35, 6.25),
+            spline0(erosion_f, 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.35, 6.25),
             if(erosion_f < 0.45,
-            spline0(erosion_f, 0.35, 6.25, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.35, 6.25, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.55,
-            spline0(erosion_f, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.62,
-            spline0(erosion_f, 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.62, 6.25),
+            spline0(erosion_f, 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.62, 6.25),
             6.25))))))))))
           functions:
             spline: $math/functions/spline.yml:functions.spline
@@ -96,8 +96,8 @@ sampler:
                 if(ridges_folded_f < -0.9,
                 6.25,
                 if(ridges_folded_f < -0.69,
-                spline0(ridges_folded_f, -0.9, 6.25, -0.69, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
-                spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)))
+                spline0(ridges_folded_f, -0.9, 6.25, -0.69, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
+                spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)))
               functions:
                 spline: $math/functions/spline.yml:functions.spline
                 spline0: $math/functions/spline.yml:functions.spline0
@@ -122,25 +122,25 @@ sampler:
           arguments: *id001
           expression: |-
             if(erosion_f < -0.6,
-            spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+            spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
             if(erosion_f < -0.5,
-            spline0(erosion_f, -0.6, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.6, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.35,
-            spline0(erosion_f, -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.25,
-            spline0(erosion_f, -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.1,
-            spline0(erosion_f, -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.03,
-            spline0(erosion_f, -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.35,
-            spline0(erosion_f, 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.35, 5.47),
+            spline0(erosion_f, 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.35, 5.47),
             if(erosion_f < 0.45,
-            spline0(erosion_f, 0.35, 5.47, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.35, 5.47, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.55,
-            spline0(erosion_f, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.62,
-            spline0(erosion_f, 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.62, 5.47),
+            spline0(erosion_f, 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.62, 5.47),
             5.47))))))))))
           functions:
             spline: $math/functions/spline.yml:functions.spline
@@ -190,8 +190,8 @@ sampler:
                 if(ridges_folded_f < -0.9,
                 5.47,
                 if(ridges_folded_f < -0.69,
-                spline0(ridges_folded_f, -0.9, 5.47, -0.69, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
-                spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)))
+                spline0(ridges_folded_f, -0.9, 5.47, -0.69, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
+                spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)))
               functions:
                 spline: $math/functions/spline.yml:functions.spline
                 spline0: $math/functions/spline.yml:functions.spline0
@@ -216,25 +216,25 @@ sampler:
           arguments: *id001
           expression: |-
             if(erosion_f < -0.6,
-            spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+            spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
             if(erosion_f < -0.5,
-            spline0(erosion_f, -0.6, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.6, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.35,
-            spline0(erosion_f, -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.25,
-            spline0(erosion_f, -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.1,
-            spline0(erosion_f, -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.03,
-            spline0(erosion_f, -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.35,
-            spline0(erosion_f, 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.35, 5.08),
+            spline0(erosion_f, 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.35, 5.08),
             if(erosion_f < 0.45,
-            spline0(erosion_f, 0.35, 5.08, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.35, 5.08, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.55,
-            spline0(erosion_f, 0.45, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.45, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.62,
-            spline0(erosion_f, 0.55, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.62, 5.08),
+            spline0(erosion_f, 0.55, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.62, 5.08),
             5.08))))))))))
           functions:
             spline: $math/functions/spline.yml:functions.spline
@@ -284,8 +284,8 @@ sampler:
                 if(ridges_folded_f < -0.9,
                 5.08,
                 if(ridges_folded_f < -0.69,
-                spline0(ridges_folded_f, -0.9, 5.08, -0.69, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
-                spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)))
+                spline0(ridges_folded_f, -0.9, 5.08, -0.69, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
+                spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)))
               functions:
                 spline: $math/functions/spline.yml:functions.spline
                 spline0: $math/functions/spline.yml:functions.spline0
@@ -310,27 +310,27 @@ sampler:
           arguments: *id001
           expression: |-
             if(erosion_f < -0.6,
-            spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+            spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
             if(erosion_f < -0.5,
-            spline0(erosion_f, -0.6, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.6, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.35,
-            spline0(erosion_f, -0.5, spline_1(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.5, spline_1(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.25,
-            spline0(erosion_f, -0.35, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.35, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < -0.1,
-            spline0(erosion_f, -0.25, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.25, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.03,
-            spline0(erosion_f, -0.1, spline_2(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, -0.1, spline_2(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.05,
-            spline0(erosion_f, 0.03, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.05, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.03, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.05, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.4,
-            spline0(erosion_f, 0.05, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.4, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.05, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.4, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.45,
-            spline0(erosion_f, 0.4, spline_3(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.45, spline_4(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.4, spline_3(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.45, spline_4(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.55,
-            spline0(erosion_f, 0.45, spline_4(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.55, spline_4(ridges_f, erosion_f, continents_f, ridges_folded_f)),
+            spline0(erosion_f, 0.45, spline_4(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.55, spline_4(continents_f, ridges_folded_f, erosion_f, ridges_f)),
             if(erosion_f < 0.58,
-            spline0(erosion_f, 0.55, spline_4(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.58, 4.69),
+            spline0(erosion_f, 0.55, spline_4(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.58, 4.69),
             4.69)))))))))))
           functions:
             spline: $math/functions/spline.yml:functions.spline
@@ -378,9 +378,9 @@ sampler:
               arguments: *id001
               expression: |-
                 if(ridges_folded_f < 0.45,
-                spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+                spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
                 if(ridges_folded_f < 0.7,
-                spline0(ridges_folded_f, 0.45, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), 0.7, 1.56),
+                spline0(ridges_folded_f, 0.45, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), 0.7, 1.56),
                 1.56))
               functions:
                 spline: $math/functions/spline.yml:functions.spline
@@ -404,9 +404,9 @@ sampler:
               arguments: *id001
               expression: |-
                 if(ridges_folded_f < -0.7,
-                spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f),
+                spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f),
                 if(ridges_folded_f < -0.15,
-                spline0(ridges_folded_f, -0.7, spline_0(ridges_f, erosion_f, continents_f, ridges_folded_f), -0.15, 1.37),
+                spline0(ridges_folded_f, -0.7, spline_0(continents_f, ridges_folded_f, erosion_f, ridges_f), -0.15, 1.37),
                 1.37))
               functions:
                 spline: $math/functions/spline.yml:functions.spline

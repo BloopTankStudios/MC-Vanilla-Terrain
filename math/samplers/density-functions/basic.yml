@@ -2,7 +2,7 @@ samplers:
   continents:
     dimensions: 2
     type: EXPRESSION
-    expression: continentalness(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    expression: continentalness(x * .25 + shift_x(x, z), z * .25 + shift_z(x, z))
     samplers:
       continentalness: $math/samplers/noise/vanilla.yml:samplers.continentalness
       shift_x: $math/samplers/density-functions/basic_shift.yml:samplers.shift_x
@@ -10,15 +10,15 @@ samplers:
   erosion:
     dimensions: 2
     type: EXPRESSION
-    expression: erosion(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    expression: erosion(x * .25 + shift_x(x, z), z * .25 + shift_z(x, z))
     samplers:
-      erosion: $math/samplers/noise/vanilla.yml:samplers.erosion
+      erosion: $math/samplers/noise/vanilla.yml:samplers.erosion_noise
       shift_x: $math/samplers/density-functions/basic_shift.yml:samplers.shift_x
       shift_z: $math/samplers/density-functions/basic_shift.yml:samplers.shift_z
   ridges:
     dimensions: 2
     type: EXPRESSION
-    expression: ridge(x * .25 + shift_x(x, y, z), z * .25 + shift_z(x, y, z))
+    expression: ridge(x * .25 + shift_x(x, z), z * .25 + shift_z(x, z))
     samplers:
       ridge: $math/samplers/noise/vanilla.yml:samplers.ridge
       shift_x: $math/samplers/density-functions/basic_shift.yml:samplers.shift_x

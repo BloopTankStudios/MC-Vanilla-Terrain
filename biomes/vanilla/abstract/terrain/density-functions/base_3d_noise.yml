@@ -1,5 +1,15 @@
 sampler:
   dimensions: 3
+  type: VANILLA_SMEAR
+  xz-scale: 0.25
+  y-scale: 0.125
+  xz-factor: 80
+  y-factor: 160
+  smear-scale-multiplier: 8
+  salt: minecraft:vanilla
+
+samplerTerra:
+  dimensions: 3
   expression: sampling(mainNoise(x,y,z), minNoise(x,y,z), maxNoise(x,y,z))
   functions:
     sampling:

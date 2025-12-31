@@ -1,7 +1,7 @@
 sampler:
   dimensions: 3
   type: EXPRESSION
-  expression: yClampedGradient(y, -64, 320, 1.5, -1.5) + (offset(x, z) - 0.5037500262260437)
+  expression: yClampedGradient(y, -64, 320, 1.5, -1.5) + offset(x, z)
   functions:
     yClampedGradient:
       arguments:
